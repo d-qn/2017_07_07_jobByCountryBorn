@@ -1,0 +1,375 @@
+---
+title: ""
+author: "Duc-Quang Nguyen | swissinfo.ch"
+date: " 2017"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: simplex
+---
+## Txt
+
+#### Snippets
+
+## Data
+
+Voici le fichier les infos reposent sur les données du relevé structurel 2010-2014 combinées. Les effectifs ont été pondérés et extrapolés de manière à correspondre à l’ensemble de la population âgée de 15 ans et plus. Les codes inférieurs à 0 représentent essentiellement des personnes non actives, mais aussi certaines personnes pour lesquelles il n’a pas été possible de déterminer la profession.
+Le N (dernière colonne) représente le nombre de personnes qui à l’enquête ont déclaré exercer la profession en question. J’ai vidé les cases pour lesquels les calculs reposent sur moins de 10 cas (N< 10).
+
+[Original NCCR post](http://nccr-onthemove.ch/knowledge-transfer/migration-mobility-indicators/dans-quels-secteurs-economiques-trouve-t-on-le-plus-de-migrant⋅e⋅s/)
+
+## Related
+
+
+```{r setup, include=FALSE}
+displayExplore <- F
+excel.file <- "data/4 Participation in the Sectors of the Labor Market_SwissInfo.xlsx"
+translation.file <- "input/Job by nationality - Sheet1.csv"
+
+library(tidyverse)
+library(scales)
+library(magrittr)
+library(countrycode)
+library(swiMap)
+library(swiTheme)
+
+### Getting data in packages
+library(readxl)
+
+### Interactive 
+library(htmltools)
+library(swiRcharts)
+```
+
+```{r data load & wrangle, include = F, warning = F}
+txt <- loadTranslation(translation.file)
+
+xls.read <- read_excel(excel.file, skip = 1, col_types = c("numeric", "text", rep("numeric", 12))) %>%
+  rename(
+    isco = X__1,
+    description = X__2
+  ) %>% select(-N) %>% # N column is the sample figures (non extrapolated values)
+suppressWarnings()
+  
+# make data long
+data <- xls.read %>% 
+  select(-Total) %>%
+  gather(lieuNaissance, valeur, -isco, -description)
+
+# check Total is the same as Total dropped 
+check <- data %>% group_by(isco) %>% summarise(Total = sum(valeur, na.rm = T))
+stopifnot(all.equal(check[,2] %>% unlist(use.names = F), xls.read %>% select(Total) %>% unlist(use.names = F)))
+
+# add the total people by country of birth -> remov all negative codes!
+byCountryTot <- data %>% filter(isco > 0) %>% #filter(isco != -8) %>% 
+  group_by(lieuNaissance) %>%
+  summarise(countryTot = sum(valeur, na.rm = T)) %>%
+  ungroup()
+```
+
+
+```{r explore & viz, fig.width=10, fig.height=12}
+colors <- c( "#193442", "#4c6570", "#7e827a", "#beb298", "#e3cda1", "#aa8959", "#d18768", "#b15953", "#72302f" )
+
+#labelsLieuNaissance<- c("Suisse", "Allemagne")
+
+# add the total by country and aggregate by isco group
+adat <- data %>% 
+  filter(isco >= 1000) %>% 
+  mutate(group = factor(isco %/% 1000)) %>%
+  group_by(group, lieuNaissance) %>%
+  summarise(valeur = sum(valeur, na.rm = T)) %>%
+  ungroup()
+
+adat <- left_join(adat, byCountryTot) %>%
+  mutate(share = (valeur / countryTot) * 100)
+
+byGroupTot <- adat %>% group_by(group) %>% 
+  summarise(groupTot = sum(valeur, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(shareTot = (groupTot / sum(groupTot)) * 100)
+
+adat <- left_join(adat, byGroupTot %>% select(group, shareTot)) %>%
+  mutate(dev = share - shareTot)
+
+# check
+stopifnot(adat %>% group_by(lieuNaissance) %>% summarise(check = sum(dev)) %>% 
+  ungroup %>% select(check) %>% unlist(use.names = F)  < 10e-2)
+
+ggplot(data = adat) + geom_col(aes(x = group, y = dev, fill = group)) + 
+  facet_wrap(~ reorder(lieuNaissance, -countryTot), nrow = 5) + 
+  swi_theme() + scale_fill_manual(values = colors)
+
+## Compute deviation for detailed isco codes 
+dataa <- left_join(
+  data %>% filter(isco >= 1000) %>% mutate(group = factor(isco %/% 1000)),
+  adat %>% select(group, lieuNaissance, countryTot, dev)
+) %>% mutate(shareIsco = (valeur / countryTot) * 100)
+
+byIscoTot <- dataa %>% group_by(isco) %>% 
+  summarise(iscoTot = sum(valeur, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(shareTot = (iscoTot / sum(iscoTot)) * 100)
+
+dataa <- left_join(dataa, byIscoTot) %>% 
+  mutate(devIsco = shareIsco - shareTot)
+
+# check
+dataa %>% group_by(lieuNaissance) %>% summarise(test = sum(shareTot), test2 = sum(shareIsco, na.rm = T))
+dataa %>% ggplot() + geom_histogram(aes(devIsco), binwidth = 0.1) + swi_theme()
+
+dataa %>% filter(devIsco >= 2) %>% knitr::kable(caption = "isco showing a deviation from 2 percentage point against expected/overall share")
+
+# dataa %>% filter(abs(dev) >= 4) %>%
+#   group_by(group, lieuNaissance) %>% 
+#   filter(devIsco > 1) %>% 
+#   select(description, valeur, devIsco) %>%
+#   ungroup() %>% View()
+
+## Compute deviation for detailed isco codes but for Swiss vs non-Swiss
+datab <- data %>% 
+  filter(isco >= 1000) %>% 
+  mutate(origin = ifelse(lieuNaissance == "Suisse", "Suisse", "Etranger")) %>%
+  group_by(isco, description, origin) %>%
+  summarise(valeur = sum(valeur, na.rm = T)) %>%
+  ungroup() %>%
+  group_by(isco, description) %>%
+  mutate(totIsco = sum(valeur, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(share = (valeur / totIsco) * 100) 
+
+datac <- data %>% 
+  filter(isco >= 1000) %>% 
+  mutate(origin = ifelse(lieuNaissance == "Suisse", "Suisse", "Etranger")) %>%
+  mutate(group = isco %/% 1000) %>% 
+  group_by(group, origin) %>% 
+  summarise(totGroupOri = sum(valeur, na.rm = T)) %>%
+  ungroup() %>% 
+  group_by(group) %>%
+  mutate(totGroup = sum(totGroupOri), shareGroup = (totGroupOri / totGroup)) %>%
+  ungroup() %>%
+  mutate(shareGroupTot = (totGroup / (sum(totGroup) /2 ) )) %>%
+  group_by(origin) %>%
+  mutate(totOri = sum(totGroupOri)) %>% 
+  ungroup() %>%
+  mutate(sharebyOri = (totGroupOri / totOri), dev = sharebyOri - shareGroupTot)
+ 
+if(displayExplore) {
+  datac %>% ggplot(aes(group, shareGroup)) + geom_bar(aes(fill = origin), position = "dodge", stat="identity")  
+  datac %>% ggplot(aes(group, shareGroup)) + geom_bar(aes(fill = origin), position = "stack", stat="identity") + swi_theme()  
+}
+```
+
+# Production graphics
+
+### Profession group by country of birth and number of jobs
+
+Inspirations: [WSJ](http://www.wsj.com/graphics/us-mexico-trade/)
+
+```{r interactive proportional stacked bar chart}
+# https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
+library(ggiraph)
+
+
+# compute rect positions
+dd <- datac %>% select(group, origin, totGroupOri, shareGroupTot, shareGroup) %>%
+  group_by(origin) %>% arrange(desc(group)) %>%
+  mutate(ymax = cumsum(shareGroupTot), ymin = ymax - shareGroupTot) %>% 
+  ungroup() %>% 
+  group_by(group) %>% arrange(desc(origin)) %>%
+  mutate(xmax = cumsum(shareGroup), xmin = xmax - shareGroup) %>%
+  ungroup()
+
+# compute the average % non-Suisse for all jobs
+tot <- dd %>% group_by(origin) %>%
+  summarise(sum(totGroupOri)) %>% ungroup()
+meanCH <- (tot[tot$origin == "Suisse", 2] / tot[,2] %>% 
+             sum()) %>% unlist(use.names = F)
+
+labels <- dd %>% filter(origin == "Suisse") %>%
+  mutate(y = ymax - 0.01, yRange = (ymax - ymin)* 100) %>%
+  select(group, origin, xmin, y, yRange) %>% 
+  ungroup()
+
+lang <- 'FR'
+
+plotProportionalStackedBar <- function(ddd, txt) {
+  
+  # add translation
+  labels$label <- txt[as.character(labels$group), lang]
+  ddd$label <- txt[as.character(ddd$group), lang]
+  ddd$orilab <- txt[ifelse(ddd$origin == "Suisse", "ori.CH", "ori.nonCH"), lang]
+  
+  ddd %<>% mutate(id = paste0(origin, group)) %>%
+  mutate(tp = paste0(#'<div class = "tp">',
+   "<em>", label, "</em><br><hr>",
+   orilab, " <b>", round(shareGroup * 100, 1), "%</b><br>", "(", formatC(round(totGroupOri), big.mark = "'", mode = "character"), " ", txt["job", lang], ")"#, 
+  # '</div>'
+  ))
+
+  gp <- ggplot(ddd) + 
+    geom_rect_interactive(
+      aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
+      colour = "white", size = 0.2, alpha = 0.9
+    ) +
+  scale_x_continuous(position = "top", expand = c(0.001, 0.01),
+                     labels = scales::percent, breaks = scales::pretty_breaks(n = 3)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1.015)) + 
+  scale_fill_manual(values = c('#4c6570', '#b15953'), guide_legend(title = txt['leg.title', lang])) + 
+  swi_theme(y_gridlines = F) + 
+  theme(
+    axis.line.x = element_blank(), 
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title = element_blank(),
+    axis.ticks.length = unit(0.2,"cm"),
+    plot.margin=unit(c(0.3, 0, 0.3, 0), "cm"),
+    legend.position = "top",
+    legend.key.height = unit(8, "points"),
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 9)
+        ) 
+  
+  gp2 <- gp +  
+    geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0.01, yend = 1), aes(x = x, y = y, xend = xend, yend = yend), linetype = 2, colour = "#193442", size = 1, alpha = 0.7) +
+    annotate(geom = "text", x = meanCH,  y = 1.015, label = txt["average" , lang], vjust = 1, family = "Open Sans Condensed", colour =  "#193442", size = 3) + 
+    geom_text(data = labels, 
+              aes(x = xmin + 0.008, y = y, label = label, size = yRange),
+              hjust = 0, vjust = 1, colour = "white", family = "Open Sans Condensed") +
+    scale_size_continuous(range = c(2, 6), guide = F)
+  
+  
+  gpi <- ggiraph(
+    code = {print(gp2)},
+    hover_css =  "fill:#0e1d25;cursor:pointer;",
+    tooltip_opacity = 0.8,
+    tooltip_extra_css = "padding:4px;margin:1px;border-radius:3px;background-color:#efe9e0;font-size:0.8em;",
+    # tooltip_offy = -3,
+    pointsize = 11,
+    width = 1,
+    width_svg = 6,
+    height_svg = 7,
+    fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
+  )
+  
+  save_html(
+    tags$html(
+      tags$head(includeHTML("styles.html")),
+      tags$h2(HTML(txt['main.title', lang] )), 
+      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr', lang] ))),
+      div(class="container", gpi),
+     # div(id = "cite", HTML(paste0(txt['source', lang], ": ", txt['source.name', lang], " | @duc_qn | swissinfo.ch"))),
+      HTML(iframeresizer)  
+    ), 
+    file =  paste0("occupationsByISCOandSwiss_", lang, ".html"), libdir = "js")
+  
+  }
+
+
+
+plotProportionalStackedBar(dd, txt)
+
+
+  
+```
+
+
+
+
+
+
+```{r interactive Marimekko chart, include = F, eval = FALSE}
+# http://jsfiddle.net/highcharts/h2np93k1/
+
+# https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
+library(ggiraph)
+
+# compute rect positions
+dd <- datac %>% select(group, origin, totGroupOri, shareGroupTot, shareGroup) %>%
+  group_by(origin) %>% arrange(desc(group)) %>%
+  mutate(ymax = cumsum(shareGroupTot), ymin = ymax - shareGroupTot) %>% 
+  ungroup() %>% 
+  group_by(group) %>% arrange(desc(origin)) %>%
+  mutate(xmax = cumsum(shareGroup), xmin = xmax - shareGroup) %>%
+  ungroup()
+
+# compute the average % non-Suisse for all jobs
+tot <- dd %>% group_by(origin) %>%
+  summarise(sum(totGroupOri)) %>% ungroup()
+meanCH <- (tot[tot$origin == "Suisse", 2] / tot[,2] %>% sum()) %>% unlist(use.names = F)
+
+# # shift x coordinates based on their delta from the meanCH
+# dd %<>% group_by(origin) %>%
+#   mutate(
+#     xshift = ifelse(origin == "Suisse", meanCH - shareGroup, shareGroup - (1 - meanCH)),
+#     xmin = xmin + xshift, xmax = xmax + xshift) %>%
+#   ungroup()
+
+
+labels <- dd %>% filter(origin == "Suisse") %>%
+  mutate(y = ymax - 0.015, yRange = (ymax - ymin)* 100) %>%
+  select(group, origin, xmin, y, yRange) %>% 
+  ungroup()
+
+isco1 <- structure(1:9, 
+                   names = c("Managers", "Professionals", 
+                             "Technicians and associate professionals",
+                            "Clerical support workers", 
+                            "Service and sales workers", 
+                            "Skilled agricultural, forestry and fishery workers", 
+                            "Craft and related trades workers", 
+                            "Plant and machine operators, and assemblers", 
+                            "Elementary occupations"))
+
+labels <- left_join(labels, enframe(isco1, value = "group"))
+
+dd %<>% mutate(id = paste0(origin, group)) %>%
+  mutate(tp = paste0(
+    round(shareGroup * 100, 1), "% ", group, "(", round(totGroupOri), ")"
+  ))
+
+
+
+gp <- ggplot(dd) + 
+  geom_rect_interactive(
+    aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
+    colour = "white", size = 1, alpha = 0.9) +
+  scale_x_continuous(position = "top", 
+                     labels = scales::percent, breaks = scales::pretty_breaks(n = 3)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1.015)) + 
+  scale_fill_manual(values = c('#4c6570', '#b15953'), 
+                    guide_legend(title = "")) + # rev(c("#72302f", "#193442"))) +
+  swi_theme(y_gridlines = F) + 
+  theme(
+    axis.line.x = element_blank(), 
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title = element_blank(),
+    legend.position = "top"
+        ) 
+  
+gp2 <- gp +  
+  geom_vline(xintercept = meanCH, linetype = 2, colour = "#193442", size = 1, alpha = 0.7) +
+  annotate(geom = "text", x = meanCH,  y = 1.013, label = "average", vjust = 1, family = "Open Sans Condensed", colour =  "#193442") + 
+  geom_text(data = labels, alpha = 0.7,
+            aes(x = xmin + 0.01, y = y, label = name), size = 4, 
+             hjust = 0, colour = "black", family = "Open Sans Condensed") 
+
+
+gpi <- ggiraph(
+  code = {print(gp2)},
+  #hover_css =  "stroke-width:2pt;cursor:pointer;stroke-opacity:1;",
+  tooltip_opacity = 0.9,
+  # tooltip_offy = -3,
+  pointsize = 12,
+  width = 1,
+  width_svg = 6,
+  height_svg = 8,
+  fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
+)
+  gpi
+  
+  
+```
+
