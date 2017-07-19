@@ -8,9 +8,39 @@ output:
     toc_depth: 3
     theme: simplex
 ---
+**Had to install ggiraph 0.3.3 to have responsive charts!?!?!?**
+
+`require(devtools)
+install_version("ggiraph", version = "0.3.3", repos = "http://cran.us.r-project.org")`
+
+[github issue filed](https://github.com/davidgohel/ggiraph/issues/66)
+
 ## Txt
 
+### Dans quelles professions trouve-t-on le plus d'immigrés?
+
+Entre l'accueil des cerveaux et la peur de l'étranger
+
+
+
+
+
+
 #### Snippets
+
+Ceci est le résultat de plusieurs vagues d’immigration, chacune avec leur caractère propre – depuis les Italiens d’après-guerre, jusqu’à l’immigration de travailleurs généralement hautement qualifiés, fortement marquée par les Allemands au cours des années 2000
+
+Autre évolution marquante, la formation des nouveaux travailleurs immigrés a profondément changé au cours de la dernière décennie. Autour de 1980, moins de 20 % d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Ces vingt dernières années, le rapport s’est inversé : aujourd’hui, la plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés. Les quelque 25 % de travailleurs restants ont une formation secondaire.
+
+On constate depuis plusieurs dizaines d’années que la population active est de plus en plus qualifiée dans les pays développés ; une tendance qui est encore plus marquée parmi les migrants. 
+
+
+Avec l’instauration progressive de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. C’est surtout le niveau de qualification des nouveaux immigrés qui a nettement augmenté
+
+ le chômage reste depuis longtemps à un niveau bas malgré l’immigration
+ 
+L’OCDE a publié en 2013 sa première étude sur l’impact budgétaire net de l’immigration dans les pays industrialisés. L’institut conclut que l’impact est en moyenne proche de zéro. La Suisse et le Luxembourg sont les deux pays qui profitent le plus de l’immigration, selon l’organisation.
+
 
 ## Data
 
@@ -21,6 +51,10 @@ Le N (dernière colonne) représente le nombre de personnes qui à l’enquête 
 
 ## Related
 
+* [TDG - Comment la libre circulation a transformé l’économie suisse](http://www.tdg.ch/suisse/politique/Comment-la-libre-circulation-a-transforme-l-economie-suisse/story/31145377)
+* [Avenir Suisse - La Suisse attire](https://www.avenir-suisse.ch/fr/la-suisse-attire-2/)
+* [Bilan - La Suisse au top mondial pour les migrations de chercheurs](http://www.bilan.ch/economie-plus-de-redaction/suisse-top-mondial-migrations-de-chercheurs)
+* [SECO - Comprendre l’immigration des travailleurs qualifiés en Suisse](http://dievolkswirtschaft.ch/fr/2015/11/indergand-12-2015-franz/)
 
 ```{r setup, include=FALSE}
 displayExplore <- F
@@ -40,6 +74,7 @@ library(readxl)
 ### Interactive 
 library(htmltools)
 library(swiRcharts)
+library(highcharter)
 ```
 
 ```{r data load & wrangle, include = F, warning = F}
@@ -69,7 +104,7 @@ byCountryTot <- data %>% filter(isco > 0) %>% #filter(isco != -8) %>%
 ```
 
 
-```{r explore & viz, fig.width=10, fig.height=12}
+```{r explore & viz,fig.width=10, fig.height=12}
 colors <- c( "#193442", "#4c6570", "#7e827a", "#beb298", "#e3cda1", "#aa8959", "#d18768", "#b15953", "#72302f" )
 
 #labelsLieuNaissance<- c("Suisse", "Allemagne")
@@ -119,7 +154,8 @@ dataa <- left_join(dataa, byIscoTot) %>%
 dataa %>% group_by(lieuNaissance) %>% summarise(test = sum(shareTot), test2 = sum(shareIsco, na.rm = T))
 dataa %>% ggplot() + geom_histogram(aes(devIsco), binwidth = 0.1) + swi_theme()
 
-dataa %>% filter(devIsco >= 2) %>% knitr::kable(caption = "isco showing a deviation from 2 percentage point against expected/overall share")
+dataa %>% filter(devIsco >= 2) %>% 
+  knitr::kable(caption = "isco showing a deviation from 2 percentage point against expected/overall share")
 
 # dataa %>% filter(abs(dev) >= 4) %>%
 #   group_by(group, lieuNaissance) %>% 
@@ -163,14 +199,13 @@ if(displayExplore) {
 
 # Production graphics
 
-### Profession group by country of birth and number of jobs
+### Profession groups by Swiss/Foreigners and number of jobs
 
 Inspirations: [WSJ](http://www.wsj.com/graphics/us-mexico-trade/)
 
 ```{r interactive proportional stacked bar chart}
 # https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
 library(ggiraph)
-
 
 # compute rect positions
 dd <- datac %>% select(group, origin, totGroupOri, shareGroupTot, shareGroup) %>%
@@ -204,48 +239,55 @@ plotProportionalStackedBar <- function(ddd, txt) {
   ddd %<>% mutate(id = paste0(origin, group)) %>%
   mutate(tp = paste0(#'<div class = "tp">',
    "<em>", label, "</em><br><hr>",
-   orilab, " <b>", round(shareGroup * 100, 1), "%</b><br>", "(", formatC(round(totGroupOri), big.mark = "'", mode = "character"), " ", txt["job", lang], ")"#, 
+   orilab, " <b>", round(shareGroup * 100, 1), "%</b><br>", "(", 
+   prettyNum(round(totGroupOri), big.mark = " ", mode = "character"), " ", 
+   txt["job", lang], ")"#, 
   # '</div>'
-  ))
+  )) #%>% htmltools::htmlEscape(TRUE)
 
   gp <- ggplot(ddd) + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
       colour = "white", size = 0.2, alpha = 0.9
     ) +
-  scale_x_continuous(position = "top", expand = c(0.001, 0.01),
-                     labels = scales::percent, breaks = scales::pretty_breaks(n = 3)) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 1.015)) + 
-  scale_fill_manual(values = c('#4c6570', '#b15953'), guide_legend(title = txt['leg.title', lang])) + 
-  swi_theme(y_gridlines = F) + 
+  scale_x_continuous(position = "top", expand = c(0.01, 0.01),
+                     labels = scales::percent, breaks = scales::pretty_breaks(n = 4)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1.025)) + 
+  scale_fill_manual(values = c('#4c6570', '#b15953'), 
+                    guide_legend(title = txt['leg.title', lang]), 
+                    breaks = c(txt["ori.CH", lang], txt[ "ori.nonCH", lang])) + 
+  swi_theme(y_gridlines = F, base_size = 13) + 
   theme(
     axis.line.x = element_blank(), 
     axis.ticks.y = element_blank(),
     axis.text.y = element_blank(),
     axis.title = element_blank(),
     axis.ticks.length = unit(0.2,"cm"),
-    plot.margin=unit(c(0.3, 0, 0.3, 0), "cm"),
+    plot.margin=unit(c(0, 0, 0.3, 0), "cm"),
     legend.position = "top",
-    legend.key.height = unit(8, "points"),
-    legend.title = element_text(size = 10),
-    legend.text = element_text(size = 9)
+    legend.key.height = unit(9, "points"),
+    legend.title = element_text(size = 11),
+    legend.text = element_text(size = 10)
         ) 
   
   gp2 <- gp +  
-    geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0.01, yend = 1), aes(x = x, y = y, xend = xend, yend = yend), linetype = 2, colour = "#193442", size = 1, alpha = 0.7) +
-    annotate(geom = "text", x = meanCH,  y = 1.015, label = txt["average" , lang], vjust = 1, family = "Open Sans Condensed", colour =  "#193442", size = 3) + 
+    geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0, yend = 1), 
+                 aes(x = x, y = y, xend = xend, yend = yend), 
+                 linetype = 2, colour = "#e3cda1", size = 0.8, alpha = 0.7) +
+    annotate(geom = "text", x = meanCH,  y = 1.025, 
+             label = txt["average" , lang], vjust = 1, hjust = 0.5,
+             family = "Open Sans Condensed", colour =  "darkgrey", size = 3) + 
     geom_text(data = labels, 
               aes(x = xmin + 0.008, y = y, label = label, size = yRange),
               hjust = 0, vjust = 1, colour = "white", family = "Open Sans Condensed") +
-    scale_size_continuous(range = c(2, 6), guide = F)
-  
+    scale_size_continuous(range = c(2.2, 6), guide = F)
   
   gpi <- ggiraph(
     code = {print(gp2)},
     hover_css =  "fill:#0e1d25;cursor:pointer;",
     tooltip_opacity = 0.8,
     tooltip_extra_css = "padding:4px;margin:1px;border-radius:3px;background-color:#efe9e0;font-size:0.8em;",
-    # tooltip_offy = -3,
+    tooltip_offx = -13,
     pointsize = 11,
     width = 1,
     width_svg = 6,
@@ -253,123 +295,130 @@ plotProportionalStackedBar <- function(ddd, txt) {
     fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
   )
   
+  # gpi$sizingPolicy$viewer$defaultWidth <- gpi$sizingPolicy$browser$defaultWidth <- gpi$sizingPolicy$defaultWidth <- "100%"
+  # 
   save_html(
     tags$html(
       tags$head(includeHTML("styles.html")),
       tags$h2(HTML(txt['main.title', lang] )), 
-      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr', lang] ))),
+      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="10" align="top">&nbsp; ', txt['descr', lang] ))),
+      tags$h3(HTML(txt['h3', lang])),
       div(class="container", gpi),
-     # div(id = "cite", HTML(paste0(txt['source', lang], ": ", txt['source.name', lang], " | @duc_qn | swissinfo.ch"))),
+      div(id = "cite", HTML(paste0(txt['source', lang], ": ", txt['source.name', lang], " | @duc_qn | swissinfo.ch"))),
       HTML(iframeresizer)  
     ), 
     file =  paste0("occupationsByISCOandSwiss_", lang, ".html"), libdir = "js")
-  
   }
-
-
-
 plotProportionalStackedBar(dd, txt)
 
-
-  
 ```
+### Profession group by country of birth and number of jobs
 
+```{r plot small multiple by country of birth}
+chart.height <- 223
+bg.colour <-  "#f2f2f2" 
+y.max <- adat %>% select(dev) %>% range()
 
-
-
-
-
-```{r interactive Marimekko chart, include = F, eval = FALSE}
-# http://jsfiddle.net/highcharts/h2np93k1/
-
-# https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
-library(ggiraph)
-
-# compute rect positions
-dd <- datac %>% select(group, origin, totGroupOri, shareGroupTot, shareGroup) %>%
-  group_by(origin) %>% arrange(desc(group)) %>%
-  mutate(ymax = cumsum(shareGroupTot), ymin = ymax - shareGroupTot) %>% 
-  ungroup() %>% 
-  group_by(group) %>% arrange(desc(origin)) %>%
-  mutate(xmax = cumsum(shareGroup), xmin = xmax - shareGroup) %>%
+adat %<>% 
+  group_by(group) %>% 
+  mutate(shareLieuNaissance = (countryTot / sum(countryTot) * 100)) %>% 
   ungroup()
 
-# compute the average % non-Suisse for all jobs
-tot <- dd %>% group_by(origin) %>%
-  summarise(sum(totGroupOri)) %>% ungroup()
-meanCH <- (tot[tot$origin == "Suisse", 2] / tot[,2] %>% sum()) %>% unlist(use.names = F)
-
-# # shift x coordinates based on their delta from the meanCH
-# dd %<>% group_by(origin) %>%
-#   mutate(
-#     xshift = ifelse(origin == "Suisse", meanCH - shareGroup, shareGroup - (1 - meanCH)),
-#     xmin = xmin + xshift, xmax = xmax + xshift) %>%
-#   ungroup()
-
-
-labels <- dd %>% filter(origin == "Suisse") %>%
-  mutate(y = ymax - 0.015, yRange = (ymax - ymin)* 100) %>%
-  select(group, origin, xmin, y, yRange) %>% 
-  ungroup()
-
-isco1 <- structure(1:9, 
-                   names = c("Managers", "Professionals", 
-                             "Technicians and associate professionals",
-                            "Clerical support workers", 
-                            "Service and sales workers", 
-                            "Skilled agricultural, forestry and fishery workers", 
-                            "Craft and related trades workers", 
-                            "Plant and machine operators, and assemblers", 
-                            "Elementary occupations"))
-
-labels <- left_join(labels, enframe(isco1, value = "group"))
-
-dd %<>% mutate(id = paste0(origin, group)) %>%
-  mutate(tp = paste0(
-    round(shareGroup * 100, 1), "% ", group, "(", round(totGroupOri), ")"
-  ))
-
-
-
-gp <- ggplot(dd) + 
-  geom_rect_interactive(
-    aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
-    colour = "white", size = 1, alpha = 0.9) +
-  scale_x_continuous(position = "top", 
-                     labels = scales::percent, breaks = scales::pretty_breaks(n = 3)) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 1.015)) + 
-  scale_fill_manual(values = c('#4c6570', '#b15953'), 
-                    guide_legend(title = "")) + # rev(c("#72302f", "#193442"))) +
-  swi_theme(y_gridlines = F) + 
-  theme(
-    axis.line.x = element_blank(), 
-    axis.ticks.y = element_blank(),
-    axis.text.y = element_blank(),
-    axis.title = element_blank(),
-    legend.position = "top"
-        ) 
+plotOriginColumn <- function(adat, origin, txt) {
   
-gp2 <- gp +  
-  geom_vline(xintercept = meanCH, linetype = 2, colour = "#193442", size = 1, alpha = 0.7) +
-  annotate(geom = "text", x = meanCH,  y = 1.013, label = "average", vjust = 1, family = "Open Sans Condensed", colour =  "#193442") + 
-  geom_text(data = labels, alpha = 0.7,
-            aes(x = xmin + 0.01, y = y, label = name), size = 4, 
-             hjust = 0, colour = "black", family = "Open Sans Condensed") 
+  originLabel <- txt[origin, lang]
+  
+  ddd <- adat %>% 
+    filter(lieuNaissance == origin) %>%
+    mutate(
+      groupLabel = txt[as.character(group), lang],
+      tp = paste0(
+        "<em>", groupLabel, "</em><br><b>", 
+        ifelse(dev > 0, "+", ""), round(dev, 1), "</b> ", txt["tp.pp", lang], "<br><small>",
+        "(<b>", round(share, 1), "% </b>", txt["tp.vs", lang], " ",
+        round(shareTot, 1), "% ", txt["tp.tot", lang], ") ", 
+        prettyNum(round(valeur), big.mark = " ", mode = "character"), " ", txt["job", lang],
+        "</small>"
+      )     
+    )
+  
+  cchart <- hchart(
+    ddd, "column", hcaes(x = groupLabel, y = dev, tp, tp)
+  ) %>% 
+    hc_add_theme(hc_theme_swi) %>%
+    hc_legend(enabled = F) %>% 
+    hc_chart(
+      backgroundColor = bg.colour, height = chart.height, 
+      spacing = list(9,4,3,4), borderRadius = 3,
+      borderColor = "white", borderWidth = 1
+    ) %>%
+    hc_xAxis(
+      offset = -30,
+      useHTML = T, tickLength = 0, lineWidth = 0,
+      labels = list(autoRotation = list(0), useHTML =  ifelse(lang == "AR", T, F),
+                    padding = 10, y = 3,
+                    style = list(fontSize = "0.75em", color = "#8c8c8c", textOverflow = 'none')), 
+      gridLineWidth = 0,  title = "", reversed = ifelse(lang == "AR", T, F)
+    ) %>%
+    hc_yAxis(
+      useHTML = T, labels = list(format = '{value} pp', style = list(fontSize = "0.8em")),
+      gridLineWidth = 1, tickPositions = list(-10, 0, 10), offset = 3,
+      minPadding = 0, maxPadding = 0, min = y.max[1], max = y.max[2],
+      startOnTick = F, endOnTick = F, #start-endOnTick are essential to have the axis extend beyong ticks!!!
+      title = "", opposite = ifelse(lang == "AR", T, F)
+    ) %>% 
+    hc_plotOptions(column = list(colorByPoint = T, colors = colors, 
+                                 borderRadius = 1, borderColor = bg.colour, 
+                                 borderWidth = 0,
+                                 pointPadding = 0.02, groupPadding = 0.02,
+                                 states = list(hover = list( brightness = 0.4)))
+    )
+  
+    cchart %>% hc_tooltip(
+      hideDelay = 10, formatter = JS("function() { return this.point.tp; }"), 
+      useHTML = T, borderWidth = 1, 
+      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 3, fontSize = "0.7em")
+    ) %>% hc_title(
+      floating = T, useHTML = ifelse(lang == "AR", T, F), text = originLabel, x = 5, y = 9,
+      style = list("fontSize" = "16px", "color" = '#22282a')
+    ) %>%
+      hc_subtitle(
+        floating = T, align = "right", useHTML =  ifelse(lang == "AR", T, F),
+        text = paste0(round(unique(ddd$shareLieuNaissance), 1), "% ", txt["st.job", lang]), 
+        x = -5, y = 9,
+        style = list("fontSize" = "12px", "color" = "#454545")
+      )
 
+}
 
-gpi <- ggiraph(
-  code = {print(gp2)},
-  #hover_css =  "stroke-width:2pt;cursor:pointer;stroke-opacity:1;",
-  tooltip_opacity = 0.9,
-  # tooltip_offy = -3,
-  pointsize = 12,
-  width = 1,
-  width_svg = 6,
-  height_svg = 8,
-  fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
+## Loop by language
+lieuNaissance.ordered <- c(
+  "Allemagne", "France", "Italie", "Portugal", "Espagne", "Autre UE/AELE",
+  "Turquie", "Autre OCDE", "Autre Non OCDE", "Suisse"
 )
-  gpi
-  
-  
-```
+stopifnot(lieuNaissance.ordered %in% adat$lieuNaissance, adat$lieuNaissance %in% lieuNaissance.ordered)
 
+
+for (lang in colnames(txt)) {
+  cat("\n", lang)
+  plots <- lapply(lieuNaissance.ordered, function(nat) plotOriginColumn(adat, nat, txt))
+  source <- paste0(
+    txt['source', lang], ": ", htmlLink('http://nccr-onthemove.ch', txt['source.name', lang]), " | swissinfo.ch"
+  )
+  
+  save_html(
+    tags$html(
+      tags$head(includeHTML(style_swi_highcharter())),
+      tags$h2(HTML(txt['main.title2', lang])),
+      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr2', lang]))),
+      tags$h3(HTML(txt['h3b', lang])),
+      div(class = "graphic", hw_grid(plots, ncol = 2, rowheight = chart.height)),
+      div(id = "cite", HTML(source)),
+      # div(class = "footer", HTML(txt['footer', lang])),
+      HTML(iframeresizer)  
+    ), 
+    file =  paste0("jobByCountryBirth_", lang, ".html"), libdir = "js")
+}
+
+
+```
