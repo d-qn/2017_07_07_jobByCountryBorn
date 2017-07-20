@@ -15,6 +15,10 @@ install_version("ggiraph", version = "0.3.3", repos = "http://cran.us.r-project.
 
 [github issue filed](https://github.com/davidgohel/ggiraph/issues/66)
 
+## Open question
+
+* Use also this xls data to show the change over time?? **[ofs xls]("data/je-f-03.02.01.21.03.xls")**
+
 ## Txt
 
 ### Dans quelles professions trouve-t-on le plus d'immigrés?
