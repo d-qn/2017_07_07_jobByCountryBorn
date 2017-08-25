@@ -8,7 +8,11 @@ output:
     toc_depth: 3
     theme: simplex
 ---
-**Had to install ggiraph 0.3.3 to have responsive charts!?!?!?**
+
+** Had to install ggiraph 0.3.3 to have responsive charts!?!?!? or latest github version **
+
+** responsive feature for highcharter with github version 0.5.0.9999** 
+
 
 `require(devtools)
 install_version("ggiraph", version = "0.3.3", repos = "http://cran.us.r-project.org")`
@@ -208,6 +212,8 @@ if(displayExplore) {
 Inspirations: [WSJ](http://www.wsj.com/graphics/us-mexico-trade/)
 
 ```{r interactive proportional stacked bar chart}
+i.colors <- c('#4c6570', '#b15953')
+
 # https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
 library(ggiraph)
 
@@ -252,35 +258,38 @@ plotProportionalStackedBar <- function(ddd, txt) {
   gp <- ggplot(ddd) + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
-      colour = "white", size = 0.2, alpha = 0.9
+      colour = "white", size = 0.25, alpha = 0.95
     ) +
   scale_x_continuous(position = "top", expand = c(0.01, 0.01),
                      labels = scales::percent, breaks = scales::pretty_breaks(n = 4)) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 1.025)) + 
-  scale_fill_manual(values = c('#4c6570', '#b15953'), 
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1.02)) + 
+  scale_fill_manual(values = i.colors, 
                     guide_legend(title = txt['leg.title', lang]), 
                     breaks = c(txt["ori.CH", lang], txt[ "ori.nonCH", lang])) + 
-  swi_theme(y_gridlines = F, base_size = 13) + 
+  swi_theme(y_gridlines = F, base_size = 13, base_family = "Open Sans Condensed") + 
   theme(
     axis.line.x = element_blank(), 
     axis.ticks.y = element_blank(),
     axis.text.y = element_blank(),
     axis.title = element_blank(),
-    axis.ticks.length = unit(0.2,"cm"),
-    plot.margin=unit(c(0, 0, 0.3, 0), "cm"),
-    legend.position = "top",
-    legend.key.height = unit(9, "points"),
-    legend.title = element_text(size = 11),
-    legend.text = element_text(size = 10)
+    axis.ticks.length = unit(0.15,"cm"),
+    # disable legend! #
+    legend.position = "none",
+    plot.margin = unit(c(0.15, 0, 0.3, -0.2), "cm")
+    # plot.margin = unit(c(0, 0, 0.3, -0.2), "cm"),
+    # legend.position = "top",
+    # legend.key.height = unit(10, "points"),
+    # legend.title = element_text(size = 11),
+    # legend.text = element_text(size = 10)
         ) 
   
   gp2 <- gp +  
     geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0, yend = 1), 
                  aes(x = x, y = y, xend = xend, yend = yend), 
-                 linetype = 2, colour = "#e3cda1", size = 0.8, alpha = 0.7) +
-    annotate(geom = "text", x = meanCH,  y = 1.025, 
+                 linetype = 2, colour = "#efe9e0", size = 0.8, alpha = 0.7) +
+    annotate(geom = "text", x = meanCH,  y = 1.02, 
              label = txt["average" , lang], vjust = 1, hjust = 0.5,
-             family = "Open Sans Condensed", colour =  "darkgrey", size = 3) + 
+             family = "Open Sans Condensed", colour =  "#193442", size = 3) + 
     geom_text(data = labels, 
               aes(x = xmin + 0.008, y = y, label = label, size = yRange),
               hjust = 0, vjust = 1, colour = "white", family = "Open Sans Condensed") +
@@ -290,22 +299,20 @@ plotProportionalStackedBar <- function(ddd, txt) {
     code = {print(gp2)},
     hover_css =  "fill:#0e1d25;cursor:pointer;",
     tooltip_opacity = 0.8,
-    tooltip_extra_css = "padding:4px;margin:1px;border-radius:3px;background-color:#efe9e0;font-size:0.8em;",
-    tooltip_offx = -13,
+    tooltip_extra_css = "padding:4px;margin:2px;border-radius:2.5px;background-color:#efe9e0;font-size:1em;",
+    tooltip_offx = -17,
     pointsize = 11,
-    width = 1,
+    #width = 0.7,
     width_svg = 6,
-    height_svg = 7,
+    height_svg = 7.7,
     fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
   )
   
-  # gpi$sizingPolicy$viewer$defaultWidth <- gpi$sizingPolicy$browser$defaultWidth <- gpi$sizingPolicy$defaultWidth <- "100%"
-  # 
   save_html(
     tags$html(
       tags$head(includeHTML("styles.html")),
       tags$h2(HTML(txt['main.title', lang] )), 
-      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="10" align="top">&nbsp; ', txt['descr', lang] ))),
+      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr', lang] ))),
       tags$h3(HTML(txt['h3', lang])),
       div(class="container", gpi),
       div(id = "cite", HTML(paste0(txt['source', lang], ": ", txt['source.name', lang], " | @duc_qn | swissinfo.ch"))),
@@ -322,6 +329,8 @@ plotProportionalStackedBar(dd, txt)
 chart.height <- 223
 bg.colour <-  "#f2f2f2" 
 y.max <- adat %>% select(dev) %>% range()
+# scale dev 
+adat %<>% mutate(alpha = rescale(abs(dev), to = c(0.65, 1)))
 
 adat %<>% 
   group_by(group) %>% 
@@ -331,7 +340,7 @@ adat %<>%
 plotOriginColumn <- function(adat, origin, txt) {
   
   originLabel <- txt[origin, lang]
-  
+
   ddd <- adat %>% 
     filter(lieuNaissance == origin) %>%
     mutate(
@@ -345,7 +354,9 @@ plotOriginColumn <- function(adat, origin, txt) {
         "</small>"
       )     
     )
-  
+
+  h.colors <- sapply(1:length(colors), function(i) hex_to_rgba(colors[i], ddd$alpha[i]))
+    
   cchart <- hchart(
     ddd, "column", hcaes(x = groupLabel, y = dev, tp, tp)
   ) %>% 
@@ -353,46 +364,47 @@ plotOriginColumn <- function(adat, origin, txt) {
     hc_legend(enabled = F) %>% 
     hc_chart(
       backgroundColor = bg.colour, height = chart.height, 
-      spacing = list(9,4,3,4), borderRadius = 3,
+      spacing = list(9,4,1,-15), borderRadius = 3,
       borderColor = "white", borderWidth = 1
     ) %>%
     hc_xAxis(
-      offset = -30,
+      offset = -25,
       useHTML = T, tickLength = 0, lineWidth = 0,
       labels = list(autoRotation = list(0), useHTML =  ifelse(lang == "AR", T, F),
                     padding = 10, y = 3,
-                    style = list(fontSize = "0.75em", color = "#8c8c8c", textOverflow = 'none')), 
+                    style = list(fontSize = "0.65em", color = "#404040", textOverflow = 'none')), 
       gridLineWidth = 0,  title = "", reversed = ifelse(lang == "AR", T, F)
     ) %>%
     hc_yAxis(
-      useHTML = T, labels = list(format = '{value} pp', style = list(fontSize = "0.8em")),
-      gridLineWidth = 1, tickPositions = list(-10, 0, 10), offset = 3,
+      useHTML = T, labels = list(format = '{value} pp', style = list(fontSize = "0.85em")),
+      gridLineWidth = 1, tickPositions = list(-10, 10), offset = -16,
       minPadding = 0, maxPadding = 0, min = y.max[1], max = y.max[2],
       startOnTick = F, endOnTick = F, #start-endOnTick are essential to have the axis extend beyong ticks!!!
-      title = "", opposite = ifelse(lang == "AR", T, F)
+      title = "", opposite = ifelse(lang == "AR", T, F),
+      plotLines = list(list(color = "#666666", width = 1.4, value = 0, zIndex = 5))
     ) %>% 
-    hc_plotOptions(column = list(colorByPoint = T, colors = colors, 
+    hc_plotOptions(column = list(colorByPoint = T, colors = h.colors, 
                                  borderRadius = 1, borderColor = bg.colour, 
                                  borderWidth = 0,
-                                 pointPadding = 0.02, groupPadding = 0.02,
-                                 states = list(hover = list( brightness = 0.4)))
+                                 pointPadding = 0.01, groupPadding = 0.01,
+                                 states = list(hover = list( brightness = 0.2, 
+                                                             color = "#333333", borderColor = "#333333")))
     )
   
     cchart %>% hc_tooltip(
       hideDelay = 10, formatter = JS("function() { return this.point.tp; }"), 
       useHTML = T, borderWidth = 1, 
-      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 3, fontSize = "0.7em")
+      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 3, fontSize = "0.9em")
     ) %>% hc_title(
-      floating = T, useHTML = ifelse(lang == "AR", T, F), text = originLabel, x = 5, y = 9,
+      floating = T, align = "center", useHTML = ifelse(lang == "AR", T, F), text = originLabel, x = 20, y = 9,
       style = list("fontSize" = "16px", "color" = '#22282a')
     ) %>%
       hc_subtitle(
         floating = T, align = "right", useHTML =  ifelse(lang == "AR", T, F),
         text = paste0(round(unique(ddd$shareLieuNaissance), 1), "% ", txt["st.job", lang]), 
-        x = -5, y = 9,
+        x = -5, y = 6,
         style = list("fontSize" = "12px", "color" = "#454545")
       )
-
 }
 
 ## Loop by language

@@ -1,6 +1,6 @@
 code,EN,FR,DE,IT,PT,AR,RU,ES,JA,ZH
 main.title,,Dans quelles professions trouve-t-on le plus d'immigrés?,,,,,,,,
-descr,,Proportion de travailleurs nés en Suisse par groupe de professions. La hauteur des barres reflète le nombre total d'emplois,,,,,,,,
+descr,,"Proportion de travailleurs nés en <span style=""color:#b15953; font-weight:bold;"">Suisse</span> et à <span style=""color:#4c6570; font-weight:bold;"">l'étranger</span> par groupe de professions. La hauteur des barres reflète le nombre total d'emplois.",,,,,,,,
 h3,,"A priori, les métiers peu qualifés ont la plus grande proportion d'immigrés... ",,,,,,,,
 leg.title,,pays de naissance,,,,,,,,
 ori.CH,,Suisse,,,,,,,,

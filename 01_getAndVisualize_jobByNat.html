@@ -135,7 +135,8 @@ $(document).ready(function () {
 </ul>
 </div>
 
-<p><strong>Had to install ggiraph 0.3.3 to have responsive charts!?!?!?</strong></p>
+<p>** Had to install ggiraph 0.3.3 to have responsive charts!?!?!? or latest github version **</p>
+<p>** responsive feature for highcharter with github version 0.5.0.9999**</p>
 <p><code>require(devtools) install_version(&quot;ggiraph&quot;, version = &quot;0.3.3&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></p>
 <p><a href="https://github.com/davidgohel/ggiraph/issues/66">github issue filed</a></p>
 <div id="open-question" class="section level2">
@@ -601,7 +602,9 @@ if(displayExplore) {
 <div id="profession-groups-by-swissforeigners-and-number-of-jobs" class="section level3">
 <h3>Profession groups by Swiss/Foreigners and number of jobs</h3>
 <p>Inspirations: <a href="http://www.wsj.com/graphics/us-mexico-trade/">WSJ</a></p>
-<pre class="r"><code># https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
+<pre class="r"><code>i.colors &lt;- c('#4c6570', '#b15953')
+
+# https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/
 library(ggiraph)
 
 # compute rect positions
@@ -645,35 +648,38 @@ plotProportionalStackedBar &lt;- function(ddd, txt) {
   gp &lt;- ggplot(ddd) + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
-      colour = &quot;white&quot;, size = 0.2, alpha = 0.9
+      colour = &quot;white&quot;, size = 0.25, alpha = 0.95
     ) +
   scale_x_continuous(position = &quot;top&quot;, expand = c(0.01, 0.01),
                      labels = scales::percent, breaks = scales::pretty_breaks(n = 4)) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 1.025)) + 
-  scale_fill_manual(values = c('#4c6570', '#b15953'), 
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1.02)) + 
+  scale_fill_manual(values = i.colors, 
                     guide_legend(title = txt['leg.title', lang]), 
                     breaks = c(txt[&quot;ori.CH&quot;, lang], txt[ &quot;ori.nonCH&quot;, lang])) + 
-  swi_theme(y_gridlines = F, base_size = 13) + 
+  swi_theme(y_gridlines = F, base_size = 13, base_family = &quot;Open Sans Condensed&quot;) + 
   theme(
     axis.line.x = element_blank(), 
     axis.ticks.y = element_blank(),
     axis.text.y = element_blank(),
     axis.title = element_blank(),
-    axis.ticks.length = unit(0.2,&quot;cm&quot;),
-    plot.margin=unit(c(0, 0, 0.3, 0), &quot;cm&quot;),
-    legend.position = &quot;top&quot;,
-    legend.key.height = unit(9, &quot;points&quot;),
-    legend.title = element_text(size = 11),
-    legend.text = element_text(size = 10)
+    axis.ticks.length = unit(0.15,&quot;cm&quot;),
+    # disable legend! #
+    legend.position = &quot;none&quot;,
+    plot.margin = unit(c(0.15, 0, 0.3, -0.2), &quot;cm&quot;)
+    # plot.margin = unit(c(0, 0, 0.3, -0.2), &quot;cm&quot;),
+    # legend.position = &quot;top&quot;,
+    # legend.key.height = unit(10, &quot;points&quot;),
+    # legend.title = element_text(size = 11),
+    # legend.text = element_text(size = 10)
         ) 
   
   gp2 &lt;- gp +  
     geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0, yend = 1), 
                  aes(x = x, y = y, xend = xend, yend = yend), 
-                 linetype = 2, colour = &quot;#e3cda1&quot;, size = 0.8, alpha = 0.7) +
-    annotate(geom = &quot;text&quot;, x = meanCH,  y = 1.025, 
+                 linetype = 2, colour = &quot;#efe9e0&quot;, size = 0.8, alpha = 0.7) +
+    annotate(geom = &quot;text&quot;, x = meanCH,  y = 1.02, 
              label = txt[&quot;average&quot; , lang], vjust = 1, hjust = 0.5,
-             family = &quot;Open Sans Condensed&quot;, colour =  &quot;darkgrey&quot;, size = 3) + 
+             family = &quot;Open Sans Condensed&quot;, colour =  &quot;#193442&quot;, size = 3) + 
     geom_text(data = labels, 
               aes(x = xmin + 0.008, y = y, label = label, size = yRange),
               hjust = 0, vjust = 1, colour = &quot;white&quot;, family = &quot;Open Sans Condensed&quot;) +
@@ -683,22 +689,20 @@ plotProportionalStackedBar &lt;- function(ddd, txt) {
     code = {print(gp2)},
     hover_css =  &quot;fill:#0e1d25;cursor:pointer;&quot;,
     tooltip_opacity = 0.8,
-    tooltip_extra_css = &quot;padding:4px;margin:1px;border-radius:3px;background-color:#efe9e0;font-size:0.8em;&quot;,
-    tooltip_offx = -13,
+    tooltip_extra_css = &quot;padding:4px;margin:2px;border-radius:2.5px;background-color:#efe9e0;font-size:1em;&quot;,
+    tooltip_offx = -17,
     pointsize = 11,
-    width = 1,
+    #width = 0.7,
     width_svg = 6,
-    height_svg = 7,
+    height_svg = 7.7,
     fonts = list(sans = &quot;Open Sans Condensed&quot;, serif = &quot;Open Sans Condensed&quot;)
   )
   
-  # gpi$sizingPolicy$viewer$defaultWidth &lt;- gpi$sizingPolicy$browser$defaultWidth &lt;- gpi$sizingPolicy$defaultWidth &lt;- &quot;100%&quot;
-  # 
   save_html(
     tags$html(
       tags$head(includeHTML(&quot;styles.html&quot;)),
       tags$h2(HTML(txt['main.title', lang] )), 
-      div(class = &quot;descr&quot;, HTML(paste0('&lt;img src=&quot;https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png&quot; width=&quot;10&quot; align=&quot;top&quot;&gt;&amp;nbsp; ', txt['descr', lang] ))),
+      div(class = &quot;descr&quot;, HTML(paste0('&lt;img src=&quot;https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png&quot; width=&quot;12&quot; align=&quot;top&quot;&gt;&amp;nbsp; ', txt['descr', lang] ))),
       tags$h3(HTML(txt['h3', lang])),
       div(class=&quot;container&quot;, gpi),
       div(id = &quot;cite&quot;, HTML(paste0(txt['source', lang], &quot;: &quot;, txt['source.name', lang], &quot; | @duc_qn | swissinfo.ch&quot;))),
@@ -713,6 +717,8 @@ plotProportionalStackedBar(dd, txt)</code></pre>
 <pre class="r"><code>chart.height &lt;- 223
 bg.colour &lt;-  &quot;#f2f2f2&quot; 
 y.max &lt;- adat %&gt;% select(dev) %&gt;% range()
+# scale dev 
+adat %&lt;&gt;% mutate(alpha = rescale(abs(dev), to = c(0.65, 1)))
 
 adat %&lt;&gt;% 
   group_by(group) %&gt;% 
@@ -722,7 +728,7 @@ adat %&lt;&gt;%
 plotOriginColumn &lt;- function(adat, origin, txt) {
   
   originLabel &lt;- txt[origin, lang]
-  
+
   ddd &lt;- adat %&gt;% 
     filter(lieuNaissance == origin) %&gt;%
     mutate(
@@ -736,7 +742,9 @@ plotOriginColumn &lt;- function(adat, origin, txt) {
         &quot;&lt;/small&gt;&quot;
       )     
     )
-  
+
+  h.colors &lt;- sapply(1:length(colors), function(i) hex_to_rgba(colors[i], ddd$alpha[i]))
+    
   cchart &lt;- hchart(
     ddd, &quot;column&quot;, hcaes(x = groupLabel, y = dev, tp, tp)
   ) %&gt;% 
@@ -744,46 +752,47 @@ plotOriginColumn &lt;- function(adat, origin, txt) {
     hc_legend(enabled = F) %&gt;% 
     hc_chart(
       backgroundColor = bg.colour, height = chart.height, 
-      spacing = list(9,4,3,4), borderRadius = 3,
+      spacing = list(9,4,1,-15), borderRadius = 3,
       borderColor = &quot;white&quot;, borderWidth = 1
     ) %&gt;%
     hc_xAxis(
-      offset = -30,
+      offset = -25,
       useHTML = T, tickLength = 0, lineWidth = 0,
       labels = list(autoRotation = list(0), useHTML =  ifelse(lang == &quot;AR&quot;, T, F),
                     padding = 10, y = 3,
-                    style = list(fontSize = &quot;0.75em&quot;, color = &quot;#8c8c8c&quot;, textOverflow = 'none')), 
+                    style = list(fontSize = &quot;0.65em&quot;, color = &quot;#404040&quot;, textOverflow = 'none')), 
       gridLineWidth = 0,  title = &quot;&quot;, reversed = ifelse(lang == &quot;AR&quot;, T, F)
     ) %&gt;%
     hc_yAxis(
-      useHTML = T, labels = list(format = '{value} pp', style = list(fontSize = &quot;0.8em&quot;)),
-      gridLineWidth = 1, tickPositions = list(-10, 0, 10), offset = 3,
+      useHTML = T, labels = list(format = '{value} pp', style = list(fontSize = &quot;0.85em&quot;)),
+      gridLineWidth = 1, tickPositions = list(-10, 10), offset = -16,
       minPadding = 0, maxPadding = 0, min = y.max[1], max = y.max[2],
       startOnTick = F, endOnTick = F, #start-endOnTick are essential to have the axis extend beyong ticks!!!
-      title = &quot;&quot;, opposite = ifelse(lang == &quot;AR&quot;, T, F)
+      title = &quot;&quot;, opposite = ifelse(lang == &quot;AR&quot;, T, F),
+      plotLines = list(list(color = &quot;#666666&quot;, width = 1.4, value = 0, zIndex = 5))
     ) %&gt;% 
-    hc_plotOptions(column = list(colorByPoint = T, colors = colors, 
+    hc_plotOptions(column = list(colorByPoint = T, colors = h.colors, 
                                  borderRadius = 1, borderColor = bg.colour, 
                                  borderWidth = 0,
-                                 pointPadding = 0.02, groupPadding = 0.02,
-                                 states = list(hover = list( brightness = 0.4)))
+                                 pointPadding = 0.01, groupPadding = 0.01,
+                                 states = list(hover = list( brightness = 0.2, 
+                                                             color = &quot;#333333&quot;, borderColor = &quot;#333333&quot;)))
     )
   
     cchart %&gt;% hc_tooltip(
       hideDelay = 10, formatter = JS(&quot;function() { return this.point.tp; }&quot;), 
       useHTML = T, borderWidth = 1, 
-      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 3, fontSize = &quot;0.7em&quot;)
+      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 3, fontSize = &quot;0.9em&quot;)
     ) %&gt;% hc_title(
-      floating = T, useHTML = ifelse(lang == &quot;AR&quot;, T, F), text = originLabel, x = 5, y = 9,
+      floating = T, align = &quot;center&quot;, useHTML = ifelse(lang == &quot;AR&quot;, T, F), text = originLabel, x = 20, y = 9,
       style = list(&quot;fontSize&quot; = &quot;16px&quot;, &quot;color&quot; = '#22282a')
     ) %&gt;%
       hc_subtitle(
         floating = T, align = &quot;right&quot;, useHTML =  ifelse(lang == &quot;AR&quot;, T, F),
         text = paste0(round(unique(ddd$shareLieuNaissance), 1), &quot;% &quot;, txt[&quot;st.job&quot;, lang]), 
-        x = -5, y = 9,
+        x = -5, y = 6,
         style = list(&quot;fontSize&quot; = &quot;12px&quot;, &quot;color&quot; = &quot;#454545&quot;)
       )
-
 }
 
 ## Loop by language
