@@ -27,7 +27,87 @@ install_version("ggiraph", version = "0.3.3", repos = "http://cran.us.r-project.
 
 ### Dans quelles professions trouve-t-on le plus d'immigrés?
 
-Entre l'accueil des cerveaux et la peur de l'étranger
+_EMPLOI ET MIGRATION_
+
+Les milieux économiques suisses sonnent régulièrement l'alarme d'une pénurie de travailleurs qualifiés. Ils préconisent entre autres, le recours aux travailleurs étrangers. Tour d'horizon en graphiques de l'impact de l'immigration sur le paysage professionel suisse.  
+
+La Suisse entretient une relation compliquée d'amour et de haine avec les étrangers. D'une part, le peuple s'est exprimé en faveur à une courte majorité pour limiter l'immigration. D'un autre côté, les mileux économiques déplorent la pénurie de travailleurs qualifiés. Récemment, les trois cantons fers de lance de l'économie Suisse: Zurich, Bâle et Genève ont demandé davantage de permis de travail pour la main d'oeuvre venue des Etats dits "tiers" (hors UE/AELE).
+
+Le graphique ci-dessous présente la part de travailleurs nés à l'étranger selon le métier. 9 groupes de métiers, dénommés de manière absconse selon la classification internationale des professions. Ces groupes sont basés sur le niveau de compétence et la spécialisation requise au travail.
+
+PROPORTIONAL STACKED BAR
+
+On voit dans le graphique ci-dessus que les immigrés sont proportionnellement plus nombreux dans les professions les moins qualifiées. Mais la part des emplois les plus qualifiés en Suisse est particulièrement importante. En comparaison européenne, la Suisse est en tête dans ce domaine comme illustré ci-dessous.
+
+DATAWRAPPER
+
+La représentation des différents types professions varie largement selon le pays d'origine. Le graphique ci-dessous montre les différences par rapport aux proportions totales en Suisse. 
+
+SMALL MULTIPLE GRAPHICS 
+
+Les immigrés d'Allemagne, de France, de l'UE/AELE et autres pays développés de l'OCDE sont clairement surreprésentés dans les deux groupes de professions les plus qualifiées. Les différences de représentation dans les professions selon le pays de naissance s'explique par l'historique des vagues d'immigration. Si les immigrés d'Italie, du Portugal, d'Espagne et de Turquie sont aujourd'hui surreprésentés dans les professions les moins qualifiées, c'est parce que les vagues migratoires en provenance de ces pays sont les plus anciennes.   
+
+Le boom économique de l'Après-Guerre s’accompagne d’un besoin massif de main-d’œuvre. Jusqu'en 1970, la Suisse connaît une vague migratoire importante d'Italie et d'Espagne. A partir de la fin des années 70, de nombreux émigrés du Portugal choisissent la Suisse comme destination. Au cours des années 2000, des travailleurs généralement hautement qualifiés, dont bon nombre d'Allemands, immigrent en Suisse. 
+
+Depuis plusieurs dizaines d’années, la population est de plus en plus qualifiée dans les pays développés; une tendance qui est encore plus marquée parmi les migrants. Avec l’instauration de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. Le niveau de qualification des nouveaux immigrés a nettement augmenté.
+
+Autour de 1980, moins de 20% d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Aujourd’hui, ce rapport s'est inversé. La plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés.
+
+
+
+å
+ le chômage reste depuis longtemps à un niveau bas malgré l’immigration
+
+
+
+chacune avec leur caractère propre – depuis les Italiens d’après-guerre. Suivi des Portugual, Espagne.
+
+autres UE/AELE
+
+autres OCDE
+
+jusqu’à l’immigration de travailleurs généralement hautement qualifiés, fortement marquée par les Allemands au cours des années 2000
+
+On constate depuis plusieurs dizaines d’années que la population active est de plus en plus qualifiée dans les pays développés ; une tendance qui est encore plus marquée parmi les migrants. 
+
+
+
+
+Avec l’instauration progressive de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. C’est surtout le niveau de qualification des nouveaux immigrés qui a nettement augmenté
+
+ le chômage reste depuis longtemps à un niveau bas malgré l’immigration
+ 
+L’OCDE a publié en 2013 sa première étude sur l’impact budgétaire net de l’immigration dans les pays industrialisés. L’institut conclut que l’impact est en moyenne proche de zéro. La Suisse et le Luxembourg sont les deux pays qui profitent le plus de l’immigration, selon l’organisation.
+
+
+
+
+
+Récemment, les trois cantons fers de lance de l'économie Suisse: Zurich, Bâle et Genève ont demandé davantage de permis de travail pour la main d'oeuvre venue des Etats dits "tiers" (hors UE/AELE).
+
+
+https://www.swissinfo.ch/eng/worker-visas_cantons-demand-more-access-to-foreign-employees/43478508
+https://www.swissinfo.ch/fre/etats-tiers--genève--zurich-et-bâle-pour-une-hausse-des-contingents/43477904
+
+
+impact de l'immigration sur le paysage professionel suisse.
+
+
+
+
+
+
+
+
+solution eurocompatible dans l’épineux dossier de la mise en œuvre de l’initiative «Contre l’immigration de masse» [](https://www.swissinfo.ch/fre/au-parlement-suisse_frein-à-l-immigration--une-solution-eurocompatible-est-en-vue/42732046)
+limiter la libre circulation au sein de l'Union europénne.
+
+
+
+
+<iframe id="datawrapper-chart-7cQHA" src="//datawrapper.dwcdn.net/7cQHA/4/" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen" width="100%" height="470"></iframe><script type="text/javascript">if("undefined"==typeof window.datawrapper)window.datawrapper={};window.datawrapper["7cQHA"]={},window.datawrapper["7cQHA"].embedDeltas={"100":716,"200":565,"300":509,"400":509,"500":470,"600":470,"700":470,"800":470,"900":453,"1000":453},window.datawrapper["7cQHA"].iframe=document.getElementById("datawrapper-chart-7cQHA"),window.datawrapper["7cQHA"].iframe.style.height=window.datawrapper["7cQHA"].embedDeltas[Math.min(1e3,Math.max(100*Math.floor(window.datawrapper["7cQHA"].iframe.offsetWidth/100),100))]+"px",window.addEventListener("message",function(a){if("undefined"!=typeof a.data["datawrapper-height"])for(var b in a.data["datawrapper-height"])if("7cQHA"==b)window.datawrapper["7cQHA"].iframe.style.height=a.data["datawrapper-height"][b]+"px"});</script>
+
+
 
 
 
@@ -40,7 +120,7 @@ Ceci est le résultat de plusieurs vagues d’immigration, chacune avec leur car
 
 Autre évolution marquante, la formation des nouveaux travailleurs immigrés a profondément changé au cours de la dernière décennie. Autour de 1980, moins de 20 % d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Ces vingt dernières années, le rapport s’est inversé : aujourd’hui, la plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés. Les quelque 25 % de travailleurs restants ont une formation secondaire.
 
-On constate depuis plusieurs dizaines d’années que la population active est de plus en plus qualifiée dans les pays développés ; une tendance qui est encore plus marquée parmi les migrants. 
+On constate depuis plusieurs dizaines d’années que la population active est de plus en plus qualifiée dans les pays développés; une tendance qui est encore plus marquée parmi les migrants. Autour de 1980, moins de 20 % d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. 
 
 
 Avec l’instauration progressive de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. C’est surtout le niveau de qualification des nouveaux immigrés qui a nettement augmenté
@@ -55,14 +135,21 @@ L’OCDE a publié en 2013 sa première étude sur l’impact budgétaire net de
 Voici le fichier les infos reposent sur les données du relevé structurel 2010-2014 combinées. Les effectifs ont été pondérés et extrapolés de manière à correspondre à l’ensemble de la population âgée de 15 ans et plus. Les codes inférieurs à 0 représentent essentiellement des personnes non actives, mais aussi certaines personnes pour lesquelles il n’a pas été possible de déterminer la profession.
 Le N (dernière colonne) représente le nombre de personnes qui à l’enquête ont déclaré exercer la profession en question. J’ai vidé les cases pour lesquels les calculs reposent sur moins de 10 cas (N< 10).
 
-[Original NCCR post](http://nccr-onthemove.ch/knowledge-transfer/migration-mobility-indicators/dans-quels-secteurs-economiques-trouve-t-on-le-plus-de-migrant⋅e⋅s/)
+**[Original NCCR post](http://nccr-onthemove.ch/knowledge-transfer/migration-mobility-indicators/dans-quels-secteurs-economiques-trouve-t-on-le-plus-de-migrant⋅e⋅s/)**
 
 ## Related
 
+* [SECO - Comprendre l’immigration des travailleurs qualifiés en Suisse](http://dievolkswirtschaft.ch/fr/2015/11/indergand-12-2015-franz/)
+* [Seuls 20% des travailleurs étrangers répondraient au besoin de l'économie](https://www.rts.ch/info/suisse/8203195-seuls-20-des-travailleurs-etrangers-repondraient-au-besoin-de-l-economie.html)
 * [TDG - Comment la libre circulation a transformé l’économie suisse](http://www.tdg.ch/suisse/politique/Comment-la-libre-circulation-a-transforme-l-economie-suisse/story/31145377)
 * [Avenir Suisse - La Suisse attire](https://www.avenir-suisse.ch/fr/la-suisse-attire-2/)
 * [Bilan - La Suisse au top mondial pour les migrations de chercheurs](http://www.bilan.ch/economie-plus-de-redaction/suisse-top-mondial-migrations-de-chercheurs)
-* [SECO - Comprendre l’immigration des travailleurs qualifiés en Suisse](http://dievolkswirtschaft.ch/fr/2015/11/indergand-12-2015-franz/)
+
+### SWI related
+
+* [Etats tiers: Genève, Zurich et Bâle pour une hausse des contingents](https://www.swissinfo.ch/fre/etats-tiers--genève--zurich-et-bâle-pour-une-hausse-des-contingents/43477904)
+* [Frein à l’immigration: une solution eurocompatible est en vue](https://www.swissinfo.ch/fre/au-parlement-suisse_frein-à-l-immigration--une-solution-eurocompatible-est-en-vue/42732046)
+* [Les plus favorables aux initiatives anti-étrangers sont toujours les mêmes](https://www.swissinfo.ch/fre/le-vote-des-cantons-sous-la-loupe_les-plus-favorables-aux-initiatives-anti-étrangers-sont-toujours-les-mêmes/41990242)
 
 ```{r setup, include=FALSE}
 displayExplore <- F
@@ -109,10 +196,14 @@ byCountryTot <- data %>% filter(isco > 0) %>% #filter(isco != -8) %>%
   group_by(lieuNaissance) %>%
   summarise(countryTot = sum(valeur, na.rm = T)) %>%
   ungroup()
+
+## hack/clean-up: armed force have 3 digits, to be converted in 4 digit code
+data %<>% mutate(isco = ifelse(isco > 0 & isco < 1000, 10, 1) * isco )
+
 ```
 
 
-```{r explore & viz,fig.width=10, fig.height=12}
+```{r explore & viz,fig.width=10, fig.height=12, results = "asis"}
 colors <- c( "#193442", "#4c6570", "#7e827a", "#beb298", "#e3cda1", "#aa8959", "#d18768", "#b15953", "#72302f" )
 
 #labelsLieuNaissance<- c("Suisse", "Allemagne")
@@ -159,12 +250,44 @@ dataa <- left_join(dataa, byIscoTot) %>%
   mutate(devIsco = shareIsco - shareTot)
 
 # check
-dataa %>% group_by(lieuNaissance) %>% summarise(test = sum(shareTot), test2 = sum(shareIsco, na.rm = T))
+dataa %>% group_by(lieuNaissance) %>% summarise(test = sum(shareTot), test2 = sum(shareIsco, na.rm = T)) %>% 
+  ungroup() %>% mutate(check = )
 dataa %>% ggplot() + geom_histogram(aes(devIsco), binwidth = 0.1) + swi_theme()
 
+## SHow by citizenship deviation
 dataa %>% filter(devIsco >= 2) %>% 
   knitr::kable(caption = "isco showing a deviation from 2 percentage point against expected/overall share")
 
+## Show Swiss vs Foreigners deviations
+dataa2 <- data %>% filter(isco >= 1000) %>% 
+    mutate(group = factor(isco %/% 1000), nat = ifelse(lieuNaissance == "Suisse", "Suisse", "etranger")) %>%
+    select(-lieuNaissance)
+
+dataa2 %<>% group_by(isco, nat) %>% 
+  summarise(valeur = sum(valeur, na.rm = T), description = description[1]) %>%
+  ungroup() %>%
+  group_by(isco) %>% mutate(tot = sum(valeur, na.rm = T)) %>% 
+  ungroup() %>%
+  mutate(share = (valeur / tot) * 100)
+
+# compute the overall % foreigners
+overallShare <- dataa2 %>% group_by(nat) %>% summarise(tot = sum(valeur, na.rm = T)) %>% 
+  ungroup() %>% mutate(overallShare = (tot / sum(tot))*100) %>% ungroup()
+
+dataa2 <- left_join(dataa2, overallShare %>% select(-tot)) %>%
+  mutate(dev = share - overallShare)
+
+cat("\n", "## Top deviations tables", "\n")
+
+dataa2 %>% filter(abs(dev) > 30) %>% 
+    knitr::kable(caption = "isco showing a deviation from 30 percentage point against overall share")
+
+dataa2 %>% filter(share > 55, nat == "etranger", valeur > 2000) %>% arrange(desc(share)) %>%
+     knitr::kable(caption = "jobs where there is a majority of foreigners")
+
+dataa2 %>% filter(share > 85, nat == "Suisse", valeur > 2000) %>% arrange(desc(share)) %>%
+     knitr::kable(caption = "jobs where there is a nearly only Swiss")
+  
 # dataa %>% filter(abs(dev) >= 4) %>%
 #   group_by(group, lieuNaissance) %>% 
 #   filter(devIsco > 1) %>% 
@@ -308,6 +431,10 @@ plotProportionalStackedBar <- function(ddd, txt) {
     fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
   )
   
+  source <- paste0(
+    txt['source', lang], ": ", htmlLink('http://nccr-onthemove.ch', txt['source.name', lang]), " | swissinfo.ch | @duc_qn"
+  )
+    
   save_html(
     tags$html(
       tags$head(includeHTML("styles.html")),
@@ -315,7 +442,7 @@ plotProportionalStackedBar <- function(ddd, txt) {
       div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr', lang] ))),
       tags$h3(HTML(txt['h3', lang])),
       div(class="container", gpi),
-      div(id = "cite", HTML(paste0(txt['source', lang], ": ", txt['source.name', lang], " | @duc_qn | swissinfo.ch"))),
+      div(id = "cite", HTML(source)),
       HTML(iframeresizer)  
     ), 
     file =  paste0("occupationsByISCOandSwiss_", lang, ".html"), libdir = "js")
@@ -326,11 +453,11 @@ plotProportionalStackedBar(dd, txt)
 ### Profession group by country of birth and number of jobs
 
 ```{r plot small multiple by country of birth}
-chart.height <- 223
+chart.height <- 270 #223
 bg.colour <-  "#f2f2f2" 
 y.max <- adat %>% select(dev) %>% range()
 # scale dev 
-adat %<>% mutate(alpha = rescale(abs(dev), to = c(0.65, 1)))
+adat %<>% mutate(alpha = rescale(abs(dev), to = c(0.8, 1)))
 
 adat %<>% 
   group_by(group) %>% 
@@ -364,7 +491,7 @@ plotOriginColumn <- function(adat, origin, txt) {
     hc_legend(enabled = F) %>% 
     hc_chart(
       backgroundColor = bg.colour, height = chart.height, 
-      spacing = list(9,4,1,-15), borderRadius = 3,
+      spacing = list(3,4,1,-15), borderRadius = 3,
       borderColor = "white", borderWidth = 1
     ) %>%
     hc_xAxis(
@@ -376,7 +503,7 @@ plotOriginColumn <- function(adat, origin, txt) {
       gridLineWidth = 0,  title = "", reversed = ifelse(lang == "AR", T, F)
     ) %>%
     hc_yAxis(
-      useHTML = T, labels = list(format = '{value} pp', style = list(fontSize = "0.85em")),
+      useHTML = T, labels = list(format = paste('{value}', txt['y.pp', lang]), style = list(fontSize = "0.85em")),
       gridLineWidth = 1, tickPositions = list(-10, 10), offset = -16,
       minPadding = 0, maxPadding = 0, min = y.max[1], max = y.max[2],
       startOnTick = F, endOnTick = F, #start-endOnTick are essential to have the axis extend beyong ticks!!!
@@ -388,22 +515,24 @@ plotOriginColumn <- function(adat, origin, txt) {
                                  borderWidth = 0,
                                  pointPadding = 0.01, groupPadding = 0.01,
                                  states = list(hover = list( brightness = 0.2, 
-                                                             color = "#333333", borderColor = "#333333")))
+                                 color = "#333333", borderColor = "#333333")))
     )
   
     cchart %>% hc_tooltip(
       hideDelay = 10, formatter = JS("function() { return this.point.tp; }"), 
       useHTML = T, borderWidth = 1, 
-      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 3, fontSize = "0.9em")
-    ) %>% hc_title(
-      floating = T, align = "center", useHTML = ifelse(lang == "AR", T, F), text = originLabel, x = 20, y = 9,
-      style = list("fontSize" = "16px", "color" = '#22282a')
+      backgroundColor = 'rgba(255,255,255,1)', style = list(padding = 4, fontSize = "0.9em")
+    ) %>% 
+      hc_title(
+        floating = T, align = "center", useHTML = ifelse(lang == "AR", T, F), 
+        text = originLabel, x = 20, y = 20,
+        style = list("fontSize" = "15px", "color" = '#2d3639')
     ) %>%
       hc_subtitle(
         floating = T, align = "right", useHTML =  ifelse(lang == "AR", T, F),
         text = paste0(round(unique(ddd$shareLieuNaissance), 1), "% ", txt["st.job", lang]), 
-        x = -5, y = 6,
-        style = list("fontSize" = "12px", "color" = "#454545")
+        x = -3, y = 10,
+        style = list("fontSize" = "11px", "color" = "#454545")
       )
 }
 
@@ -413,7 +542,6 @@ lieuNaissance.ordered <- c(
   "Turquie", "Autre OCDE", "Autre Non OCDE", "Suisse"
 )
 stopifnot(lieuNaissance.ordered %in% adat$lieuNaissance, adat$lieuNaissance %in% lieuNaissance.ordered)
-
 
 for (lang in colnames(txt)) {
   cat("\n", lang)
