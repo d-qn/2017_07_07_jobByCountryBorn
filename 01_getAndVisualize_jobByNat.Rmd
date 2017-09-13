@@ -13,7 +13,6 @@ output:
 
 ** responsive feature for highcharter with github version 0.5.0.9999** 
 
-
 `require(devtools)
 install_version("ggiraph", version = "0.3.3", repos = "http://cran.us.r-project.org")`
 
@@ -379,6 +378,10 @@ plotProportionalStackedBar <- function(ddd, txt) {
   )) #%>% htmltools::htmlEscape(TRUE)
 
   gp <- ggplot(ddd) + 
+    annotate(geom = "text", x = 0.99, y = 0.5, label = paste(strsplit(txt['ori.nonCH', lang], "")[[1]], collapse = " "), 
+             colour = "#193442", alpha = 0.9, angle = -90, vjust = 1, hjust = 0.5, size = 16, fontface = "bold") + 
+    # annotate(geom = "text", x = 0.01, y = 0.5, label = paste(strsplit(txt['ori.CH', lang], "")[[1]], collapse = " "), 
+    #          colour = "#72302f", alpha = 0.2, angle = -90, vjust = 0, hjust = 0.5, size = 17, fontface = "bold") + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
       colour = "white", size = 0.25, alpha = 0.95
@@ -395,7 +398,7 @@ plotProportionalStackedBar <- function(ddd, txt) {
     axis.ticks.y = element_blank(),
     axis.text.y = element_blank(),
     axis.title = element_blank(),
-    axis.ticks.length = unit(0.15,"cm"),
+    #axis.ticks.length = unit(0.15,"cm"),
     # disable legend! #
     legend.position = "none",
     plot.margin = unit(c(0.15, 0, 0.3, -0.2), "cm")
@@ -404,25 +407,37 @@ plotProportionalStackedBar <- function(ddd, txt) {
     # legend.key.height = unit(10, "points"),
     # legend.title = element_text(size = 11),
     # legend.text = element_text(size = 10)
-        ) 
+  ) 
   
-  gp2 <- gp +  
+  gp2 <- gp + 
     geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0, yend = 1), 
                  aes(x = x, y = y, xend = xend, yend = yend), 
-                 linetype = 2, colour = "#efe9e0", size = 0.8, alpha = 0.7) +
+                 linetype = "dotted", colour = "#333333", size = 0.85, alpha = 0.95) +
     annotate(geom = "text", x = meanCH,  y = 1.02, 
              label = txt["average" , lang], vjust = 1, hjust = 0.5,
-             family = "Open Sans Condensed", colour =  "#193442", size = 3) + 
+             family = "Open Sans Condensed", colour =  "#193442", size = 3.2) + 
     geom_text(data = labels, 
               aes(x = xmin + 0.008, y = y, label = label, size = yRange),
               hjust = 0, vjust = 1, colour = "white", family = "Open Sans Condensed") +
     scale_size_continuous(range = c(2.2, 6), guide = F)
   
+  gp3 <- gp2 + 
+    geom_text(data = ddd %>% filter(origin == "Suisse"), 
+              aes(x = xmax, y = ymax - 0.005, label = paste0(round(shareGroup * 100), "%")),
+              hjust = 1.05, vjust = 1, size = 3, alpha = 0.65,
+              colour = "white", family = "Open Sans Condensed"
+    ) +     
+    geom_text(data = ddd %>% filter(origin == "Etranger"), 
+              aes(x = xmin, y = ymax - 0.005, label = paste0(round(shareGroup * 100), "%")),
+              hjust = -0.25, vjust = 1, size = 3, alpha = 0.65,
+              colour = "white", family = "Open Sans Condensed"
+    )
+  
   gpi <- ggiraph(
-    code = {print(gp2)},
-    hover_css =  "fill:#0e1d25;cursor:pointer;",
+    code = {print(gp3)},
+    hover_css =  "opacity:0.75;cursor:pointer;",
     tooltip_opacity = 0.8,
-    tooltip_extra_css = "padding:4px;margin:2px;border-radius:2.5px;background-color:#efe9e0;font-size:1em;",
+    tooltip_extra_css = "padding:4px;margin:2px;border-radius:3.5px;background-color:#d9d9d9;font-size:1em;",
     tooltip_offx = -17,
     pointsize = 11,
     #width = 0.7,
@@ -453,11 +468,13 @@ plotProportionalStackedBar(dd, txt)
 ### Profession group by country of birth and number of jobs
 
 ```{r plot small multiple by country of birth}
+
 chart.height <- 270 #223
 bg.colour <-  "#f2f2f2" 
 y.max <- adat %>% select(dev) %>% range()
 # scale dev 
-adat %<>% mutate(alpha = rescale(abs(dev), to = c(0.8, 1)))
+#adat %<>% mutate(alpha = rescale(abs(dev), to = c(0.8, 1)))
+adat %<>% mutate(alpha = ifelse(dev >= 0, 1, 0.5))
 
 adat %<>% 
   group_by(group) %>% 
@@ -483,6 +500,7 @@ plotOriginColumn <- function(adat, origin, txt) {
     )
 
   h.colors <- sapply(1:length(colors), function(i) hex_to_rgba(colors[i], ddd$alpha[i]))
+  #h.colors <- ifelse(ddd$dev > 0, colors, "#8c8c8c")
     
   cchart <- hchart(
     ddd, "column", hcaes(x = groupLabel, y = dev, tp, tp)

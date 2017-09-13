@@ -154,7 +154,7 @@ $(document).ready(function () {
 <h3>Dans quelles professions trouve-t-on le plus d’immigrés?</h3>
 <p><em>EMPLOI ET MIGRATION</em></p>
 <p>Les milieux économiques suisses sonnent régulièrement l’alarme d’une pénurie de travailleurs qualifiés. Ils préconisent entre autres, le recours aux travailleurs étrangers. Tour d’horizon en graphiques de l’impact de l’immigration sur le paysage professionel suisse.</p>
-<p>La Suisse entretient une relation compliquée d’amour et de haine avec les étrangers. D’une part, le peuple s’est exprimé en faveur à une courte majorité pour une limitation des étrangers. D’un autre côté, les mileux économiques déplorent la pénurie de travailleurs qualifiés. Récemment, les trois cantons fers de lance de l’économie Suisse: Zurich, Bâle et Genève ont demandé davantage de permis de travail pour la main d’oeuvre venue des Etats dits “tiers” (hors UE/AELE).</p>
+<p>La Suisse entretient une relation compliquée d’amour et de haine avec les étrangers. D’une part, le peuple s’est exprimé en faveur à une courte majorité pour limiter l’immigration. D’un autre côté, les mileux économiques déplorent la pénurie de travailleurs qualifiés. Récemment, les trois cantons fers de lance de l’économie Suisse: Zurich, Bâle et Genève ont demandé davantage de permis de travail pour la main d’oeuvre venue des Etats dits “tiers” (hors UE/AELE).</p>
 <p>Le graphique ci-dessous présente la part de travailleurs nés à l’étranger selon le métier. 9 groupes de métiers, dénommés de manière absconse selon la classification internationale des professions. Ces groupes sont basés sur le niveau de compétence et la spécialisation requise au travail.</p>
 <p>PROPORTIONAL STACKED BAR</p>
 <p>On voit dans le graphique ci-dessus que les immigrés sont proportionnellement plus nombreux dans les professions les moins qualifiées. Mais la part des emplois les plus qualifiés en Suisse est particulièrement importante. En comparaison européenne, la Suisse est en tête dans ce domaine comme illustré ci-dessous.</p>
@@ -164,7 +164,7 @@ $(document).ready(function () {
 <p>Les immigrés d’Allemagne, de France, de l’UE/AELE et autres pays développés de l’OCDE sont clairement surreprésentés dans les deux groupes de professions les plus qualifiées. Les différences de représentation dans les professions selon le pays de naissance s’explique par l’historique des vagues d’immigration. Si les immigrés d’Italie, du Portugal, d’Espagne et de Turquie sont aujourd’hui surreprésentés dans les professions les moins qualifiées, c’est parce que les vagues migratoires en provenance de ces pays sont les plus anciennes.</p>
 <p>Le boom économique de l’Après-Guerre s’accompagne d’un besoin massif de main-d’œuvre. Jusqu’en 1970, la Suisse connaît une vague migratoire importante d’Italie et d’Espagne. A partir de la fin des années 70, de nombreux émigrés du Portugal choisissent la Suisse comme destination. Au cours des années 2000, des travailleurs généralement hautement qualifiés, dont bon nombre d’Allemands, immigrent en Suisse.</p>
 <p>Depuis plusieurs dizaines d’années, la population est de plus en plus qualifiée dans les pays développés; une tendance qui est encore plus marquée parmi les migrants. Avec l’instauration de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. Le niveau de qualification des nouveaux immigrés a nettement augmenté.</p>
-<p>Autour de 1980, moins de 20 % d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Aujourd’hui, ce rapport s’est inversé. La plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés.</p>
+<p>Autour de 1980, moins de 20% d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Aujourd’hui, ce rapport s’est inversé. La plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés.</p>
 <p>å le chômage reste depuis longtemps à un niveau bas malgré l’immigration</p>
 <p>chacune avec leur caractère propre – depuis les Italiens d’après-guerre. Suivi des Portugual, Espagne.</p>
 <p>autres UE/AELE</p>
@@ -1799,6 +1799,10 @@ plotProportionalStackedBar &lt;- function(ddd, txt) {
   )) #%&gt;% htmltools::htmlEscape(TRUE)
 
   gp &lt;- ggplot(ddd) + 
+    annotate(geom = &quot;text&quot;, x = 0.995, y = 0.5, label = paste(strsplit(txt['ori.nonCH', lang], &quot;&quot;)[[1]], collapse = &quot; &quot;), 
+             colour = &quot;#193442&quot;, alpha = 0.9, angle = -90, vjust = 1, hjust = 0.5, size = 16, fontface = &quot;bold&quot;) + 
+    # annotate(geom = &quot;text&quot;, x = 0.01, y = 0.5, label = paste(strsplit(txt['ori.CH', lang], &quot;&quot;)[[1]], collapse = &quot; &quot;), 
+    #          colour = &quot;#72302f&quot;, alpha = 0.2, angle = -90, vjust = 0, hjust = 0.5, size = 17, fontface = &quot;bold&quot;) + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
       colour = &quot;white&quot;, size = 0.25, alpha = 0.95
@@ -1815,7 +1819,7 @@ plotProportionalStackedBar &lt;- function(ddd, txt) {
     axis.ticks.y = element_blank(),
     axis.text.y = element_blank(),
     axis.title = element_blank(),
-    axis.ticks.length = unit(0.15,&quot;cm&quot;),
+    #axis.ticks.length = unit(0.15,&quot;cm&quot;),
     # disable legend! #
     legend.position = &quot;none&quot;,
     plot.margin = unit(c(0.15, 0, 0.3, -0.2), &quot;cm&quot;)
@@ -1824,25 +1828,37 @@ plotProportionalStackedBar &lt;- function(ddd, txt) {
     # legend.key.height = unit(10, &quot;points&quot;),
     # legend.title = element_text(size = 11),
     # legend.text = element_text(size = 10)
-        ) 
+  ) 
   
-  gp2 &lt;- gp +  
+  gp2 &lt;- gp + 
     geom_segment(data = tibble(x = meanCH, xend = meanCH, y = 0, yend = 1), 
                  aes(x = x, y = y, xend = xend, yend = yend), 
-                 linetype = 2, colour = &quot;#efe9e0&quot;, size = 0.8, alpha = 0.7) +
+                 linetype = &quot;dotted&quot;, colour = &quot;#333333&quot;, size = 0.85, alpha = 0.95) +
     annotate(geom = &quot;text&quot;, x = meanCH,  y = 1.02, 
              label = txt[&quot;average&quot; , lang], vjust = 1, hjust = 0.5,
-             family = &quot;Open Sans Condensed&quot;, colour =  &quot;#193442&quot;, size = 3) + 
+             family = &quot;Open Sans Condensed&quot;, colour =  &quot;#193442&quot;, size = 3.2) + 
     geom_text(data = labels, 
               aes(x = xmin + 0.008, y = y, label = label, size = yRange),
               hjust = 0, vjust = 1, colour = &quot;white&quot;, family = &quot;Open Sans Condensed&quot;) +
     scale_size_continuous(range = c(2.2, 6), guide = F)
   
+  gp3 &lt;- gp2 + 
+    geom_text(data = ddd %&gt;% filter(origin == &quot;Suisse&quot;), 
+              aes(x = xmax, y = ymax - 0.005, label = paste0(round(shareGroup * 100), &quot;%&quot;)),
+              hjust = 1.05, vjust = 1, size = 3, alpha = 0.65,
+              colour = &quot;white&quot;, family = &quot;Open Sans Condensed&quot;
+    ) +     
+    geom_text(data = ddd %&gt;% filter(origin == &quot;Etranger&quot;), 
+              aes(x = xmin, y = ymax - 0.005, label = paste0(round(shareGroup * 100), &quot;%&quot;)),
+              hjust = -0.25, vjust = 1, size = 3, alpha = 0.65,
+              colour = &quot;white&quot;, family = &quot;Open Sans Condensed&quot;
+    )
+  
   gpi &lt;- ggiraph(
-    code = {print(gp2)},
-    hover_css =  &quot;fill:#0e1d25;cursor:pointer;&quot;,
+    code = {print(gp3)},
+    hover_css =  &quot;opacity:0.75;cursor:pointer;&quot;,
     tooltip_opacity = 0.8,
-    tooltip_extra_css = &quot;padding:4px;margin:2px;border-radius:2.5px;background-color:#efe9e0;font-size:1em;&quot;,
+    tooltip_extra_css = &quot;padding:4px;margin:2px;border-radius:3.5px;background-color:#d9d9d9;font-size:1em;&quot;,
     tooltip_offx = -17,
     pointsize = 11,
     #width = 0.7,
@@ -1875,7 +1891,8 @@ plotProportionalStackedBar(dd, txt)</code></pre>
 bg.colour &lt;-  &quot;#f2f2f2&quot; 
 y.max &lt;- adat %&gt;% select(dev) %&gt;% range()
 # scale dev 
-adat %&lt;&gt;% mutate(alpha = rescale(abs(dev), to = c(0.8, 1)))
+#adat %&lt;&gt;% mutate(alpha = rescale(abs(dev), to = c(0.8, 1)))
+adat %&lt;&gt;% mutate(alpha = ifelse(dev &gt;= 0, 1, 0.5))
 
 adat %&lt;&gt;% 
   group_by(group) %&gt;% 
@@ -1901,6 +1918,7 @@ plotOriginColumn &lt;- function(adat, origin, txt) {
     )
 
   h.colors &lt;- sapply(1:length(colors), function(i) hex_to_rgba(colors[i], ddd$alpha[i]))
+  #h.colors &lt;- ifelse(ddd$dev &gt; 0, colors, &quot;#8c8c8c&quot;)
     
   cchart &lt;- hchart(
     ddd, &quot;column&quot;, hcaes(x = groupLabel, y = dev, tp, tp)
