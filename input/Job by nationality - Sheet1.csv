@@ -1,12 +1,14 @@
 code,EN,FR,DE,IT,PT,AR,RU,ES,JA,ZH
-main.title,,Dans quelles professions trouve-t-on le plus d'immigrés?,,,,,,,,
-descr,,"Proportion de travailleurs nés en <span style=""color:#b15953; font-weight:bold;"">Suisse</span> et à <span style=""color:#4c6570; font-weight:bold;"">l'étranger</span> par groupe de professions. Les professions sont présentées par ordre décroissant du niveau de compétence et de spécialisation. La hauteur des barres reflète le nombre total d'emplois.",,,,,,,,
-h3,,Les métiers peu qualifés comptent la plus grande proportion d'immigrés,,,,,,,,
-leg.title,,pays de naissance,,,,,,,,
-ori.CH,,Suisse,,,,,,,,
-ori.nonCH,,Etranger,,,,,,,,
-job,,emplois,,,,,,,,
-average,,moyenne,,,,,,,,
+main.title,,Dans quelles professions trouve-t-on le plus d'immigrés?,In welchen Berufen sind am meisten Zugewanderte tätig?,In quali professioni ci sono più immigrati?,Em quais profissões encontramos o maior númereo de estrangeiros?,,,,,哪些行业的从业者中外国移民最多？
+descr,,"Proportion de travailleurs nés en <span style=""color:#b15953; font-weight:bold;"">Suisse</span> et à <span style=""color:#4c6570; font-weight:bold;"">l'étranger</span> par groupe de professions. Les professions sont présentées par ordre décroissant du niveau de compétence et de spécialisation. La hauteur des barres reflète le nombre total d'emplois.","Anteil in der <span style=""color:#b15953; font-weight:bold;"">Schweiz</span> und im <span style=""color:#4c6570; font-weight:bold;"">Ausland</span> Geborener nach Berufsgruppe. Berufe sind in absteigender Reihenfolge nach Kompetenzen und Spezialisierung aufgelistet. Die Höhe der Balken entspricht der Gesamtzahl der Arbeitsplätze.","Proporzione di lavoratori nati in <span style=ʺcolor:#b15953; font-weight:bold;ʺ>Svizzera</span> e 
+ <span style=ʺcolor:#4c6570; font-weight:bold;ʺ>all'estero</span> per tipo di professione. Queste sono presentate in ordine decrescente per livello di competenze e di specializzazione. L'altezza della barra riflette il numero totale di impieghi.","Proporção de trabalhadores nascidos em <span style=ʺcolor:#b15953; font-weight:bold;ʺ>Suisse</span> e no
+ <span style=ʺcolor:#4c6570; font-weight:bold;ʺ>exterior</span> por grupo de profissões. As profissões são apresentadas por grupo de ocupações. As profissões são apresentadas em ordem decrescente de nível de habilidade e especialização. A altura das barras reflete o número total de empregos.",,,,,"各行业中出生于<span style=""color:#b15953; font-weight:bold;"">瑞士</span>和<span style=""color:#4c6570; font-weight:bold;"">外国</span>的从业人员人数比例。行业按技能与专业水平由高到低的顺序排列。条形的高度反映了职位总数。"
+h3,,Les métiers peu qualifés comptent la plus grande proportion d'immigrés,In wenig qualifizierten Berufen sind die meisten Zugewanderten tätig,I mestieri poco qualificati registrano il più alto numero di immigrati.,As ocupações de baixa qualificação têm a maior proporção de imigrantes,,,,,技术含量低的行业雇佣外国人的比例最高
+leg.title,,pays de naissance,Geburtsland,Luogo di nascita,país de nascimento,,,,,出生国
+ori.CH,,Suisse,Schweiz,Svizzera ,Suíça,,,,,瑞士
+ori.nonCH,,Etranger,Ausland,Estero,Estrangeiro,,,,,外国
+job,,emplois,Beruf,impieghi,empregos,,,,,职位
+average,,moyenne,Durchschnitt,media,média,,,,,平均值
 1,Managers,Directeurs et cadres,Führungskräfte,Direttori e quadri,Executivos,مدراء وكوادر (أطر),Руководящие кадры,Ejecutivos,経営・管理,管理人员
 2,Professionals,Prof. intellectuelles et scientifiques,Akademische Berufe,Prof. intellettuali e scientifiche,Profissões acadêmicas,مهن فكرية وعلمية,Профессии в сфере высшего образования,Académicos,学問・科学,学术人员
 3,Technicians and associate professionals,Professions techniques ou apparentées,Techniker und gleichrangige Berufe,Professioni tecniche o simili,Profissões técnicas,مهن تقنية أو شبيهة,Инженерные и схожие специальности,Profesionales técnicos,技術,技术人员与同级人员
@@ -16,27 +18,28 @@ average,,moyenne,,,,,,,,
 7,Craft and related trades workers,Métiers de l’industrie et de l’artisanat,Handwerks- und verwandte Berufe,Mestieri dell'industria e dell'artigianato,Mestres de ofício e artesões,مهن صناعية وحرفية,Ремесленные и схожие специальности,Artesanos ,製造・建設,手工业者
 8,Machine operators and assemblers,Conducteurs et assembleurs,"Anlagen- und Maschinenbedienung, Montage","Conduttori di impianti, addetti al montaggio",Operadores de máquinas e montadores,مُشغلو آلات ومُجمِّعون,"Обслуживание промышленного оборудования, монтаж",Operadores de maquinaria y montadores,機械・整備,机械操作工及装配工
 9,Elementary occupations,Professions non qualifiées,Hilfsarbeitskräfte,Professioni non qualificate,Profissionais não qualificados,مهن غير مؤهلة,Подсобные рабочие,Profesionales no cualificados,資格不要の職業,帮工
-main.title2,,Les migrants des pays développés sont surreprésentés dans les métiers hautement qualifiés,,,,,,,,
-descr2,,"Ecarts en points de pourcentage (pp) des différents groupes de professions par rapport aux proportions totales en Suisse, selon le pays de naissance.  ",,,,,,,,
-h3b,,Disparités des métiers selon le pays de naissance,,,,,,,,
-y.pp,,pp,,,,,,,,
-tp.pp,,points de pourcentage,,,,,,,,
-tp.vs,,vs,,,,,,,,
-st.job,,des emplois,,,,,,,,
-tp.tot,,au total,,,,,,,,
-Allemagne,,Allemagne,,,,,,,,
-Autre Non OCDE,,Autres pays hors de l'OCDE,,,,,,,,
-Autre OCDE,,Autres pays de l'OCDE,,,,,,,,
-Autre UE/AELE,,Autres pays de l'UE/AELE,,,,,,,,
-Espagne,,Espagne,,,,,,,,
-France,,France,,,,,,,,
-Italie,,Italie,,,,,,,,
-Portugal,,Portugal,,,,,,,,
-Suisse,,Suisse,,,,,,,,
-Turquie,,Turquie,,,,,,,,
+main.title2,,Les migrants des pays développés sont en général surreprésentés dans les métiers hautement qualifiés,Zugewanderte aus Industrieländern sind normalerweise in hoch qualifizierten Berufen überrepräsentiert,"Francesi e tedeschi sono sovrarappresentati nei mestieri altamente qualificati 
+",,,,,,高技能行业中来自发达国家的移民比例极高
+descr2,,"Ecarts en points de pourcentage (pp) des différents groupes de professions par rapport aux proportions totales en Suisse, selon le pays de naissance.  ","Prozentpunkte (pp) der verschiedenen Berufsgruppen im Vergleich mit dem Gesamtverhältnis in der Schweiz, nach Geburtsland.","Differenza in punti percentuali (pp) tra le varie categorie professionali rispetto alle percentuali totali in Svizzera, per paese di nascita. ",,,,,,按出生国显示各类行业在瑞士总比例中所占百分比的差额。
+h3b,,Disparités des métiers selon le pays de naissance,Berufsunterschiede nach Geburtsland,Disparità professionale a seconda del paese di nascita,,,,,,各行业按出生国显示的外国移民比例差异
+y.pp,,pp,pp,pp,,,,,,百分比
+tp.pp,,points de pourcentage,Prozentpunkte,punti percentuali,,,,,,百分比
+tp.vs,,vs,vs,vs,,,,,,比
+st.job,,des emplois,der Beschäftigten,degli impieghi in Svizzera,,,,,,职位
+tp.tot,,au total,Total,in totale,no total,,,,,总计
+Allemagne,,Allemagne,Deutschland,Germania,Alemanha,,,,,德国
+Autre Non OCDE,,Autres pays hors de l'OCDE,Andere Länder ausserhalb der OECD,Altri paesi al di fuori dell'OCSE,Outros países fora da OCDE,,,,,非经合组织成员国
+Autre OCDE,,Autres pays de l'OCDE,Andere OECD-Länder,Altri paesi dell'OCSE,Outros países da OCDE,,,,,经合组织成员国
+Autre UE/AELE,,Autres pays de l'UE/AELE,Andere EU- / EFTA-Länder,Altri paesi dell'UE/AELS,Outros países da UE/AELE,,,,,欧盟/欧洲自由贸易联盟成员国
+Espagne,,Espagne,Spanien,Spagna,Espanha,,,,,西班牙
+France,,France,Frankreich,Francia,França,,,,,法国
+Italie,,Italie,Italien,Italia,Itália,,,,,意大利
+Portugal,,Portugal,Portugal,Portogallo,Portugal,,,,,葡萄牙
+Suisse,,Suisse,Schweiz,Svizzera ,Suíça,,,,,瑞士
+Turquie,,Turquie,Türkei,Turchia,Turquia,,,,,土耳其
 source,Source,source,Quelle,Fonte,fonte,المصدر,Источник,Fuente,出典,来源
-source.name,,NCCR - on the move | Office fédéral de la statistique 2010-2014,,,,,,,,
+source.name,,NCCR - on the move | Office fédéral de la statistique 2010-2014,NCCR - on the move | Bundesamt für Statistik 2010-2014,NCCR - on the move | Ufficio federale di statistica 2010-2014,NCCR - on the move | Departamento Federal de Estatísticas 2010-2014,,,,,瑞士国家科研能力中心-流动迁移 | 瑞士联邦统计局2010-2014年数据
 code,Code,code,Code,Codice,código,الرمز,Код,código,コード,代码
-code.name,,ggiraph,ggiraph,,,,,,,
+code.name,,ggiraph,ggiraph,ggiraph,ggiraph,,,,,ggiraph
 title.font,OpenSans-CondensedBold,OpenSans-CondensedBold,OpenSans-CondensedBold,OpenSans-CondensedBold,OpenSans-CondensedBold,OpenSans-CondensedBold,OpenSans-CondensedBold,OpenSans-CondensedBold,PingFang TC Regular,PingFang TC Regular
 base.font,OpenSans-CondensedLight,OpenSans-CondensedLight,OpenSans-CondensedLight,OpenSans-CondensedLight,OpenSans-CondensedLight,OpenSans-CondensedLight,OpenSans-CondensedLight,OpenSans-CondensedLight,PingFang TC Thin,PingFang TC Thin

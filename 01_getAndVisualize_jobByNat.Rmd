@@ -361,21 +361,24 @@ labels <- dd %>% filter(origin == "Suisse") %>%
 
 lang <- 'FR'
 
-plotProportionalStackedBar <- function(ddd, txt) {
+plotProportionalStackedBar <- function(ddd, txt, lang) {
   
   # add translation
   labels$label <- txt[as.character(labels$group), lang]
   ddd$label <- txt[as.character(ddd$group), lang]
   ddd$orilab <- txt[ifelse(ddd$origin == "Suisse", "ori.CH", "ori.nonCH"), lang]
   
-  ddd %<>% mutate(id = paste0(origin, group)) %>%
-  mutate(tp = paste0(#'<div class = "tp">',
-   "<em>", label, "</em><br><hr>",
-   orilab, " <b>", round(shareGroup * 100, 1), "%</b><br>", "(", 
-   prettyNum(round(totGroupOri), big.mark = " ", mode = "character"), " ", 
-   txt["job", lang], ")"#, 
-  # '</div>'
-  )) #%>% htmltools::htmlEscape(TRUE)
+  ddd %<>% 
+    mutate(
+      id = paste0(origin, group),
+      tp = paste0(#'<div class = "tp">',
+      "<em>", label, "</em><br><hr>",
+      orilab, " <b>", round(shareGroup * 100, 1), "%</b><br>", "(", 
+      prettyNum(round(totGroupOri), big.mark = " ", mode = "character"), " ", 
+      txt["job", lang], ")"#, 
+      # '</div>'
+  ))
+  ddd %<>% mutate(tp = gsub("'", "`", tp))
 
   gp <- ggplot(ddd) + 
     annotate(geom = "text", x = 0.99, y = 0.5, label = paste(strsplit(txt['ori.nonCH', lang], "")[[1]], collapse = " "), 
@@ -440,7 +443,7 @@ plotProportionalStackedBar <- function(ddd, txt) {
     tooltip_extra_css = "padding:4px;margin:2px;border-radius:3.5px;background-color:#d9d9d9;font-size:1em;",
     tooltip_offx = -17,
     pointsize = 11,
-    #width = 0.7,
+    width = 1,
     width_svg = 6,
     height_svg = 7.7,
     fonts = list(sans = "Open Sans Condensed", serif = "Open Sans Condensed")
@@ -461,8 +464,13 @@ plotProportionalStackedBar <- function(ddd, txt) {
       HTML(iframeresizer)  
     ), 
     file =  paste0("occupationsByISCOandSwiss_", lang, ".html"), libdir = "js")
-  }
-plotProportionalStackedBar(dd, txt)
+}
+
+#plotProportionalStackedBar(dd, txt)
+for (lang in colnames(txt)) {
+  cat("\n", lang)
+  plotProportionalStackedBar(dd, txt, lang)
+}
 
 ```
 ### Profession group by country of birth and number of jobs
