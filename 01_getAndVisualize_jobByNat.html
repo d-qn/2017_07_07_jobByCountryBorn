@@ -1942,13 +1942,13 @@ plotOriginColumn &lt;- function(adat, origin, txt) {
       hc_title(
         floating = T, align = &quot;center&quot;, useHTML = ifelse(lang == &quot;AR&quot;, T, F), 
         text = originLabel, x = 20, y = 20,
-        style = list(&quot;fontSize&quot; = &quot;15px&quot;, &quot;color&quot; = '#2d3639')
+        style = list(&quot;fontSize&quot; = &quot;16px&quot;, &quot;color&quot; = '#2d3639')
     ) %&gt;%
       hc_subtitle(
         floating = T, align = &quot;right&quot;, useHTML =  ifelse(lang == &quot;AR&quot;, T, F),
         text = paste0(round(unique(ddd$shareLieuNaissance), 1), &quot;% &quot;, txt[&quot;st.job&quot;, lang]), 
         x = -3, y = 10,
-        style = list(&quot;fontSize&quot; = &quot;11px&quot;, &quot;color&quot; = &quot;#454545&quot;)
+        style = list(&quot;fontSize&quot; = &quot;12px&quot;, &quot;color&quot; = &quot;#454545&quot;)
       )
 }
 

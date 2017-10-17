@@ -456,13 +456,13 @@ plotOriginColumn <- function(adat, origin, txt) {
       hc_title(
         floating = T, align = "center", useHTML = ifelse(lang == "AR", T, F), 
         text = originLabel, x = 20, y = 20,
-        style = list("fontSize" = "15px", "color" = '#2d3639')
+        style = list("fontSize" = "16px", "color" = '#2d3639')
     ) %>%
       hc_subtitle(
         floating = T, align = "right", useHTML =  ifelse(lang == "AR", T, F),
         text = paste0(round(unique(ddd$shareLieuNaissance), 1), "% ", txt["st.job", lang]), 
         x = -3, y = 10,
-        style = list("fontSize" = "11px", "color" = "#454545")
+        style = list("fontSize" = "12px", "color" = "#454545")
       )
 }
 
