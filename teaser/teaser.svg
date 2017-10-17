@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg_1"
+   viewBox="0 0 416.5835 516.85673"
+   class="svg-responsive-container"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="teaser.svg"
+   width="416.5835"
+   height="516.85675"
+   inkscape:export-filename="/Users/nguyendu/swissinfo/2017_07_07_jobByCountryBorn/teaser2.png"
+   inkscape:export-xdpi="221.14444"
+   inkscape:export-ydpi="221.14444">
+  <metadata
+     id="metadata160">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs158">
+    <defs
+       id="defs5">
+      <clipPath
+         id="cl1_0">
+        <rect
+           id="rect8"
+           height="122.4"
+           width="0"
+           y="432"
+           x="0" />
+      </clipPath>
+    </defs>
+    <defs
+       id="defs11">
+      <clipPath
+         id="cl1_1">
+        <rect
+           id="rect14"
+           height="554.40002"
+           width="432"
+           y="0"
+           x="0" />
+      </clipPath>
+    </defs>
+    <defs
+       id="defs16">
+      <clipPath
+         id="cl1_2">
+        <rect
+           id="rect19"
+           height="526.92999"
+           width="432"
+           y="18.959999"
+           x="0" />
+      </clipPath>
+    </defs>
+    <defs
+       id="defs127">
+      <clipPath
+         id="cl1_3">
+        <rect
+           id="rect130"
+           height="554.40002"
+           width="432"
+           y="0"
+           x="0" />
+      </clipPath>
+    </defs>
+    <clipPath
+       id="cl1_2-3">
+      <rect
+         id="rect19-4"
+         height="526.92999"
+         width="432"
+         y="18.959999"
+         x="0" />
+    </clipPath>
+    <clipPath
+       id="cl1_2-5">
+      <rect
+         id="rect19-5"
+         height="526.92999"
+         width="432"
+         y="18.959999"
+         x="0" />
+    </clipPath>
+    <clipPath
+       id="cl1_2-4">
+      <rect
+         id="rect19-3"
+         height="526.92999"
+         width="432"
+         y="18.959999"
+         x="0" />
+    </clipPath>
+    <clipPath
+       id="cl1_2-8">
+      <rect
+         id="rect19-0"
+         height="526.92999"
+         width="432"
+         y="18.959999"
+         x="0" />
+    </clipPath>
+    <clipPath
+       id="cl1_2-88">
+      <rect
+         id="rect19-1"
+         height="526.92999"
+         width="432"
+         y="18.959999"
+         x="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2083"
+     inkscape:window-height="1283"
+     id="namedview156"
+     showgrid="false"
+     inkscape:zoom="2.0992771"
+     inkscape:cx="69.334897"
+     inkscape:cy="457.31672"
+     inkscape:window-x="1280"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg_1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <xhtml:defs>
+    <xhtml:style
+       type="text/css"><![CDATA[
+body, h1, h2, h3, h4, h5, h6, .descr, .subtitle, #cite, .footer { text-rendering: optimizeLegibility; font-family: "Open Sans Condensed", sans-serif; font-size: 17px; color: rgb(5, 5, 5); margin: 9px 18px 0px 1px; }
+.tp { color: rgb(247, 245, 237); font-size: 1em; padding: 0px 1px 1px; border-radius: 15px 50px 30px; }
+.tpsubtitle { color: rgb(247, 245, 237); font-style: italic; font-size: 0.85em; margin-bottom: 2px; padding: 0px 2px 3px 5px; }
+#cite { position: fixed; bottom: 0px; font-size: 0.8em; font-weight: lighter; color: rgb(77, 77, 77); text-align: right; margin-top: 30px; margin-left: 2%; margin-right: 10px; }
+#cite a { text-decoration: none; color: rgb(130, 17, 34); }
+.container { width: 100%; min-height: 100%; position: relative; }
+.footer { font-size: 1.1em; color: rgb(155, 155, 155); padding: 0px; margin-left: 6px; margin-bottom: 8px; max-width: 80%; }
+.descr { font-size: 0.9em; color: rgb(77, 77, 77); font-weight: lighter; margin-left: 6px; }
+.subtitle { font-size: 0.9em; line-height: 98%; color: rgb(77, 77, 77); font-weight: lighter; max-width: 97%; margin-left: 2%; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.4em; line-height: 106%; font-weight: bolder; margin-left: 6px; }
+h3 { font-size: 1.1em; margin-left: 6px; color: rgb(89, 89, 89); }
+h4 { font-family: "Open Sans", sans-serif; font-weight: 600; font-size: 0.9em; padding-left: 3px; padding-right: 5px; color: rgb(114, 48, 47); position: absolute; z-index: 900; }
+h5 { font-size: 0.85em; color: white; font-weight: bolder; padding-left: 2px; }
+h6 { font-size: 0.8em; }
+a:visited { color: rgb(128, 0, 128); }
+body { max-width: 100%; }
+a, a:visited { text-decoration: underline; }
+div.tooltip_uid6865cd2138aa41e895b9dda1e8ab3782 { position: absolute; pointer-events: none; z-index: 999; padding: 4px; margin: 2px; border-radius: 3.5px; background-color: rgb(217, 217, 217); font-size: 1em; }
+.cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782:hover { opacity: 0.75; cursor: pointer; }
+.clicked_uid6865cd2138aa41e895b9dda1e8ab3782 { opacity: 0.75; cursor: pointer; }]]></xhtml:style>
+  </xhtml:defs>
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     clip-path="url(#cl1_0)"
+     id="1"
+     height="554.40002"
+     width="432"
+     y="0"
+     x="0"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <g
+     id="g21"
+     clip-path="url(#cl1_2)"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002">
+    <text
+       style="font-weight:bold;font-size:42.67499924px;font-family:'Open Sans Condensed';fill:#193442;fill-opacity:0.9"
+       font-weight="bold"
+       font-size="34.14pt"
+       id="2"
+       transform="matrix(0,1,-1,0,386.67,171.59)">E t r a n g e r</text>
+  </g>
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse9"
+     title="&lt;em&gt;Professions non qualifiées&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;40.6%&lt;/b&gt;&lt;br&gt;(86 101 emplois)"
+     clip-path="url(#cl1_2)"
+     id="3"
+     height="27.57"
+     width="168.78"
+     y="518.33002"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse8"
+     title="&lt;em&gt;Conducteurs et assembleurs&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;57.5%&lt;/b&gt;&lt;br&gt;(93 424 emplois)"
+     clip-path="url(#cl1_2)"
+     id="4"
+     height="21.1"
+     width="239.32001"
+     y="497.23001"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse7"
+     title="&lt;em&gt;Métiers de l’industrie et de l’artisanat&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;68.2%&lt;/b&gt;&lt;br&gt;(323 894 emplois)"
+     clip-path="url(#cl1_2)"
+     id="5"
+     height="61.720001"
+     width="283.60001"
+     y="435.5"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse6"
+     title="&lt;em&gt;Agriculteurs, sylviculteurs&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;90.5%&lt;/b&gt;&lt;br&gt;(83 336 emplois)"
+     clip-path="url(#cl1_2)"
+     id="6"
+     height="11.96"
+     width="376.54999"
+     y="423.54001"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse5"
+     title="&lt;em&gt;Services &amp; commerçants&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;66.2%&lt;/b&gt;&lt;br&gt;(412 074 emplois)"
+     clip-path="url(#cl1_2)"
+     id="7"
+     height="80.870003"
+     width="275.39999"
+     y="342.67999"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse4"
+     title="&lt;em&gt;Employés administratifs&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;79.4%&lt;/b&gt;&lt;br&gt;(298 635 emplois)"
+     clip-path="url(#cl1_2)"
+     id="8"
+     height="48.860001"
+     width="330.34"
+     y="293.82001"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse3"
+     title="&lt;em&gt;Professions techniques ou apparentées&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;78.2%&lt;/b&gt;&lt;br&gt;(606 274 emplois)"
+     clip-path="url(#cl1_2)"
+     id="9"
+     height="100.71"
+     width="325.35999"
+     y="193.11"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522292;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse2"
+     title="&lt;em&gt;Prof. intellectuelles et scientifiques&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;73.7%&lt;/b&gt;&lt;br&gt;(615 406 emplois)"
+     clip-path="url(#cl1_2)"
+     id="10"
+     height="108.42"
+     width="306.76999"
+     y="84.690002"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#b15953;fill-opacity:0.74522293;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Suisse1"
+     title="&lt;em&gt;Directeurs et cadres&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Suisse &lt;b&gt;69.8%&lt;/b&gt;&lt;br&gt;(297 823 emplois)"
+     clip-path="url(#cl1_2)"
+     id="11"
+     height="55.400002"
+     width="290.54999"
+     y="29.299999"
+     x="7.6300001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger9"
+     title="&lt;em&gt;Professions non qualifiées&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;59.4%&lt;/b&gt;&lt;br&gt;(126 136 emplois)"
+     clip-path="url(#cl1_2)"
+     id="12"
+     height="27.57"
+     width="247.25999"
+     y="518.33002"
+     x="176.42"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger8"
+     title="&lt;em&gt;Conducteurs et assembleurs&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;42.5%&lt;/b&gt;&lt;br&gt;(68 991 emplois)"
+     clip-path="url(#cl1_2)"
+     id="13"
+     height="21.1"
+     width="176.73"
+     y="497.23001"
+     x="246.95"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger7"
+     title="&lt;em&gt;Métiers de l’industrie et de l’artisanat&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;31.8%&lt;/b&gt;&lt;br&gt;(151 257 emplois)"
+     clip-path="url(#cl1_2)"
+     id="14"
+     height="61.720001"
+     width="132.44"
+     y="435.5"
+     x="291.23999"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger6"
+     title="&lt;em&gt;Agriculteurs, sylviculteurs&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;9.5%&lt;/b&gt;&lt;br&gt;(8 740 emplois)"
+     clip-path="url(#cl1_2)"
+     id="15"
+     height="11.96"
+     width="39.490002"
+     y="423.54001"
+     x="384.19"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger5"
+     title="&lt;em&gt;Services &amp; commerçants&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;33.8%&lt;/b&gt;&lt;br&gt;(210 440 emplois)"
+     clip-path="url(#cl1_2)"
+     id="16"
+     height="80.870003"
+     width="140.64"
+     y="342.67999"
+     x="283.04001"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger4"
+     title="&lt;em&gt;Employés administratifs&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;20.6%&lt;/b&gt;&lt;br&gt;(77 485 emplois)"
+     clip-path="url(#cl1_2)"
+     id="17"
+     height="48.860001"
+     width="85.709999"
+     y="293.82001"
+     x="337.97"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger3"
+     title="&lt;em&gt;Professions techniques ou apparentées&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;21.8%&lt;/b&gt;&lt;br&gt;(168 977 emplois)"
+     clip-path="url(#cl1_2)"
+     id="18"
+     height="100.71"
+     width="90.68"
+     y="193.11"
+     x="333"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill-rule:nonzero;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;filter-blend-mode:normal;filter-gaussianBlur-deviation:0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger2"
+     title="&lt;em&gt;Prof. intellectuelles et scientifiques&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;26.3%&lt;/b&gt;&lt;br&gt;(219 210 emplois)"
+     clip-path="url(#cl1_2)"
+     id="19"
+     height="108.42"
+     width="109.27"
+     y="84.690002"
+     x="314.41"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+  <rect
+     style="fill:#40555e;fill-opacity:1;stroke:#ffffff;stroke-width:0.53348899;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+     class="cl_data_id_uid6865cd2138aa41e895b9dda1e8ab3782"
+     data-id="Etranger1"
+     title="&lt;em&gt;Directeurs et cadres&lt;/em&gt;&lt;br&gt;&lt;hr&gt;Etranger &lt;b&gt;30.2%&lt;/b&gt;&lt;br&gt;(128 641 emplois)"
+     clip-path="url(#cl1_2)"
+     id="20"
+     height="55.400002"
+     width="125.5"
+     y="29.299999"
+     x="298.17999"
+     transform="matrix(1,0,0,0.53729584,-7.3632556,-15.599447)"
+     inkscape:export-xdpi="221.35002"
+     inkscape:export-ydpi="221.35002" />
+</svg>

@@ -3,13 +3,31 @@
 <style>
 
 body, h1, h2, h3, h4, h5, h6, .descr, .subtitle, #cite, .footer {
-   text-rendering: optimizeLegibility;
-   font-smoothing: antialiased;
    font-family: 'Open Sans Condensed', sans-serif;
-   font-size: 17px;
+   color: #050505;
+}
+
+body {
+   max-width:100%;
+   text-rendering:optimizeLegibility;
    color: #050505;
    margin:9px 18px 0px 1px;
 }
+/* adapted from: https://www.smashingmagazine.com/2016/05/fluid-typography/ */
+/* Older browsers */
+  html { font-size: 16px; }
+  
+  /* Modern browsers only need this one */
+  @media screen and (min-width: 25em){
+    html { font-size: calc( 16px + (19 - 16) * (100vw - 400px) / (800 - 400) ); }
+  }
+  /* Safari <8 and IE <11 */
+  @media screen and (min-width: 25em){
+    html { font-size: calc( 16px + (19 - 16) * (100vw - 400px) / (800 - 400) ); }
+  }
+  @media screen and (min-width: 50em){
+    html { font-size: calc( 16px + (19 - 16) * (100vw - 400px) / (800 - 400) ); }
+  }
 
 .tp{
   color:#f7f5ed;
@@ -56,7 +74,7 @@ body, h1, h2, h3, h4, h5, h6, .descr, .subtitle, #cite, .footer {
 }
     
 .descr {
- font-size: 1.05em;
+ font-size: 1.1em;
  color: #4d4d4d;
  font-weight: lighter;
  margin-left:6px;
@@ -77,15 +95,15 @@ h1 {
 
 h2 {
    font-size:1.4em;
-   line-height:106%;
+   line-height: 1.6rem;
    font-weight:bolder;
-   margin-left:6px;
+   margin:10px 0px 10px 6px;
 }
 
 h3 {
    font-size:1.1em;
-   margin-left:6px; 
-   color: #595959; 
+   color: #595959;
+   margin:8px 0px 8px 6px;
 }
 
 h4 {
@@ -115,22 +133,19 @@ a:visited {
    color: rgb(50%, 0%, 50%);
 }
 
-body {
-    max-width:100%;
-}
 
 a, a:visited {
       text-decoration: underline;
    }
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   body {
     font-size: 13px;
   }
   #cite{
     font-size: 7px;
   }
-}
+}*/
 
 </style>

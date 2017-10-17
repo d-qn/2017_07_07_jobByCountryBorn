@@ -22,112 +22,8 @@ install_version("ggiraph", version = "0.3.3", repos = "http://cran.us.r-project.
 
 * Use also this xls data to show the change over time?? **[ofs xls]("data/je-f-03.02.01.21.03.xls")**
 
-## Txt
 
 ### Dans quelles professions trouve-t-on le plus d'immigrés?
-
-_EMPLOI ET MIGRATION_
-
-Les milieux économiques suisses sonnent régulièrement l'alarme d'une pénurie de travailleurs qualifiés. Ils préconisent entre autres, le recours aux travailleurs étrangers. Tour d'horizon en graphiques de l'impact de l'immigration sur le paysage professionel suisse.  
-
-La Suisse entretient une relation compliquée d'amour et de haine avec les étrangers. D'une part, le peuple s'est exprimé en faveur à une courte majorité pour limiter l'immigration. D'un autre côté, les mileux économiques déplorent la pénurie de travailleurs qualifiés. Récemment, les trois cantons fers de lance de l'économie Suisse: Zurich, Bâle et Genève ont demandé davantage de permis de travail pour la main d'oeuvre venue des Etats dits "tiers" (hors UE/AELE).
-
-Le graphique ci-dessous présente la part de travailleurs nés à l'étranger selon le métier. 9 groupes de métiers, dénommés de manière absconse selon la classification internationale des professions. Ces groupes sont basés sur le niveau de compétence et la spécialisation requise au travail.
-
-PROPORTIONAL STACKED BAR
-
-On voit dans le graphique ci-dessus que les immigrés sont proportionnellement plus nombreux dans les professions les moins qualifiées. Mais la part des emplois les plus qualifiés en Suisse est particulièrement importante. En comparaison européenne, la Suisse est en tête dans ce domaine comme illustré ci-dessous.
-
-DATAWRAPPER
-
-La représentation des différents types professions varie largement selon le pays d'origine. Le graphique ci-dessous montre les différences par rapport aux proportions totales en Suisse. 
-
-SMALL MULTIPLE GRAPHICS 
-
-Les immigrés d'Allemagne, de France, de l'UE/AELE et autres pays développés de l'OCDE sont clairement surreprésentés dans les deux groupes de professions les plus qualifiées. Les différences de représentation dans les professions selon le pays de naissance s'explique par l'historique des vagues d'immigration. Si les immigrés d'Italie, du Portugal, d'Espagne et de Turquie sont aujourd'hui surreprésentés dans les professions les moins qualifiées, c'est parce que les vagues migratoires en provenance de ces pays sont les plus anciennes.   
-
-Le boom économique de l'Après-Guerre s’accompagne d’un besoin massif de main-d’œuvre. Jusqu'en 1970, la Suisse connaît une vague migratoire importante d'Italie et d'Espagne. A partir de la fin des années 70, de nombreux émigrés du Portugal choisissent la Suisse comme destination. Au cours des années 2000, des travailleurs généralement hautement qualifiés, dont bon nombre d'Allemands, immigrent en Suisse. 
-
-Depuis plusieurs dizaines d’années, la population est de plus en plus qualifiée dans les pays développés; une tendance qui est encore plus marquée parmi les migrants. Avec l’instauration de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. Le niveau de qualification des nouveaux immigrés a nettement augmenté.
-
-Autour de 1980, moins de 20% d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Aujourd’hui, ce rapport s'est inversé. La plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés.
-
-
-
-å
- le chômage reste depuis longtemps à un niveau bas malgré l’immigration
-
-
-
-chacune avec leur caractère propre – depuis les Italiens d’après-guerre. Suivi des Portugual, Espagne.
-
-autres UE/AELE
-
-autres OCDE
-
-jusqu’à l’immigration de travailleurs généralement hautement qualifiés, fortement marquée par les Allemands au cours des années 2000
-
-On constate depuis plusieurs dizaines d’années que la population active est de plus en plus qualifiée dans les pays développés ; une tendance qui est encore plus marquée parmi les migrants. 
-
-
-
-
-Avec l’instauration progressive de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. C’est surtout le niveau de qualification des nouveaux immigrés qui a nettement augmenté
-
- le chômage reste depuis longtemps à un niveau bas malgré l’immigration
- 
-L’OCDE a publié en 2013 sa première étude sur l’impact budgétaire net de l’immigration dans les pays industrialisés. L’institut conclut que l’impact est en moyenne proche de zéro. La Suisse et le Luxembourg sont les deux pays qui profitent le plus de l’immigration, selon l’organisation.
-
-
-
-
-
-Récemment, les trois cantons fers de lance de l'économie Suisse: Zurich, Bâle et Genève ont demandé davantage de permis de travail pour la main d'oeuvre venue des Etats dits "tiers" (hors UE/AELE).
-
-
-https://www.swissinfo.ch/eng/worker-visas_cantons-demand-more-access-to-foreign-employees/43478508
-https://www.swissinfo.ch/fre/etats-tiers--genève--zurich-et-bâle-pour-une-hausse-des-contingents/43477904
-
-
-impact de l'immigration sur le paysage professionel suisse.
-
-
-
-
-
-
-
-
-solution eurocompatible dans l’épineux dossier de la mise en œuvre de l’initiative «Contre l’immigration de masse» [](https://www.swissinfo.ch/fre/au-parlement-suisse_frein-à-l-immigration--une-solution-eurocompatible-est-en-vue/42732046)
-limiter la libre circulation au sein de l'Union europénne.
-
-
-
-
-<iframe id="datawrapper-chart-7cQHA" src="//datawrapper.dwcdn.net/7cQHA/4/" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen" width="100%" height="470"></iframe><script type="text/javascript">if("undefined"==typeof window.datawrapper)window.datawrapper={};window.datawrapper["7cQHA"]={},window.datawrapper["7cQHA"].embedDeltas={"100":716,"200":565,"300":509,"400":509,"500":470,"600":470,"700":470,"800":470,"900":453,"1000":453},window.datawrapper["7cQHA"].iframe=document.getElementById("datawrapper-chart-7cQHA"),window.datawrapper["7cQHA"].iframe.style.height=window.datawrapper["7cQHA"].embedDeltas[Math.min(1e3,Math.max(100*Math.floor(window.datawrapper["7cQHA"].iframe.offsetWidth/100),100))]+"px",window.addEventListener("message",function(a){if("undefined"!=typeof a.data["datawrapper-height"])for(var b in a.data["datawrapper-height"])if("7cQHA"==b)window.datawrapper["7cQHA"].iframe.style.height=a.data["datawrapper-height"][b]+"px"});</script>
-
-
-
-
-
-
-
-
-#### Snippets
-
-Ceci est le résultat de plusieurs vagues d’immigration, chacune avec leur caractère propre – depuis les Italiens d’après-guerre, jusqu’à l’immigration de travailleurs généralement hautement qualifiés, fortement marquée par les Allemands au cours des années 2000
-
-Autre évolution marquante, la formation des nouveaux travailleurs immigrés a profondément changé au cours de la dernière décennie. Autour de 1980, moins de 20 % d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. Ces vingt dernières années, le rapport s’est inversé : aujourd’hui, la plupart des nouveaux immigrés arrivent en Suisse un diplôme universitaire en poche et seuls 20 % d’entre eux sont peu qualifiés. Les quelque 25 % de travailleurs restants ont une formation secondaire.
-
-On constate depuis plusieurs dizaines d’années que la population active est de plus en plus qualifiée dans les pays développés; une tendance qui est encore plus marquée parmi les migrants. Autour de 1980, moins de 20 % d’entre eux détenaient un diplôme de formation tertiaire, tandis qu’une forte majorité avait achevé l’école primaire tout au plus. 
-
-
-Avec l’instauration progressive de la libre circulation des personnes à partir de 2002, non seulement le bilan migratoire a augmenté, mais la composition de l’immigration a également changé. C’est surtout le niveau de qualification des nouveaux immigrés qui a nettement augmenté
-
- le chômage reste depuis longtemps à un niveau bas malgré l’immigration
- 
-L’OCDE a publié en 2013 sa première étude sur l’impact budgétaire net de l’immigration dans les pays industrialisés. L’institut conclut que l’impact est en moyenne proche de zéro. La Suisse et le Luxembourg sont les deux pays qui profitent le plus de l’immigration, selon l’organisation.
-
 
 ## Data
 
@@ -151,7 +47,10 @@ Le N (dernière colonne) représente le nombre de personnes qui à l’enquête 
 * [Les plus favorables aux initiatives anti-étrangers sont toujours les mêmes](https://www.swissinfo.ch/fre/le-vote-des-cantons-sous-la-loupe_les-plus-favorables-aux-initiatives-anti-étrangers-sont-toujours-les-mêmes/41990242)
 
 ```{r setup, include=FALSE}
+exportRawData <- T
 displayExplore <- F
+cleanOutput <- T
+
 excel.file <- "data/4 Participation in the Sectors of the Labor Market_SwissInfo.xlsx"
 translation.file <- "input/Job by nationality - Sheet1.csv"
 
@@ -320,6 +219,11 @@ datac <- data %>%
   mutate(totOri = sum(totGroupOri)) %>% 
   ungroup() %>%
   mutate(sharebyOri = (totGroupOri / totOri), dev = sharebyOri - shareGroupTot)
+
+
+if(exportRawData) {
+  datac %>% write_csv(path = "data/isco1_byNationality.csv")
+}
  
 if(displayExplore) {
   datac %>% ggplot(aes(group, shareGroup)) + geom_bar(aes(fill = origin), position = "dodge", stat="identity")  
@@ -588,6 +492,27 @@ for (lang in colnames(txt)) {
       HTML(iframeresizer)  
     ), 
     file =  paste0("jobByCountryBirth_", lang, ".html"), libdir = "js")
+}
+
+```
+
+
+```{r move production graphics}
+if(cleanOutput) {
+  files <- c("jobByCountryBirth_.*", "occupationsByISCOandSwiss_.*", "js")
+
+  if(!dir.exists("output/bak")) {
+    dir.create("output/bak")
+  } else {
+    list.files("output/bak/", full.names = T, recursive = T) %>% file.remove()
+  }
+  ori.files <- list.files("output", full.names = T)[list.files("output") != "bak"]
+  file.copy(ori.files, to = "output/bak/", recursive = T)
+  unlink(ori.files, recursive = T)
+
+  files_tomove <- lapply(files, function(x) list.files(pattern = x)) %>% unlist()
+  file.copy(files_tomove, "output", recursive = T)
+  unlink(files_tomove, recursive = T)
 }
 
 
