@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Wrangle and viz occupation by country of origin"
 author: "Duc-Quang Nguyen | swissinfo.ch"
 date: " 2017"
 output: 
@@ -269,11 +269,19 @@ labels <- dd %>% filter(origin == "Suisse") %>%
 lang <- 'FR'
 
 plotProportionalStackedBar <- function(ddd, txt, lang) {
-  
+  lang_ori <- lang
+  if(lang == "AR") {
+    lang <- 'FR'
+  }
   # add translation
   labels$label <- txt[as.character(labels$group), lang]
   ddd$label <- txt[as.character(ddd$group), lang]
   ddd$orilab <- txt[ifelse(ddd$origin == "Suisse", "ori.CH", "ori.nonCH"), lang]
+  size_annotate_foreigner <- case_when(
+    lang == "RU" ~ 10,
+    lang %in% c("ZH", "JA") ~ 12,
+    ~ 14
+  )
   
   ddd %<>% 
     mutate(
@@ -289,9 +297,7 @@ plotProportionalStackedBar <- function(ddd, txt, lang) {
 
   gp <- ggplot(ddd) + 
     annotate(geom = "text", x = 0.99, y = 0.5, label = paste(strsplit(txt['ori.nonCH', lang], "")[[1]], collapse = " "), 
-             colour = "#193442", alpha = 0.9, angle = -90, vjust = 1, hjust = 0.5, size = 16, fontface = "bold") + 
-    # annotate(geom = "text", x = 0.01, y = 0.5, label = paste(strsplit(txt['ori.CH', lang], "")[[1]], collapse = " "), 
-    #          colour = "#72302f", alpha = 0.2, angle = -90, vjust = 0, hjust = 0.5, size = 17, fontface = "bold") + 
+             colour = "#193442", alpha = 0.9, angle = -90, vjust = 1, hjust = 0.5, size = size_annotate_foreigner, fontface = "bold") + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
       colour = "white", size = 0.25, alpha = 0.95
@@ -357,20 +363,27 @@ plotProportionalStackedBar <- function(ddd, txt, lang) {
   )
   
   source <- paste0(
-    txt['source', lang], ": ", htmlLink('http://nccr-onthemove.ch', txt['source.name', lang]), " | swissinfo.ch | @duc_qn"
+    txt['source', lang_ori], ": ", htmlLink('http://nccr-onthemove.ch', txt['source.name', lang_ori]), " | swissinfo.ch | @duc_qn"
   )
+  if(lang_ori == 'AR') {
+    footer <- paste0(txt[as.character(rev(labels$group)), lang], " : ", txt[as.character(rev(labels$group)), lang_ori], collapse = ", ")
+  } else {
+    footer <- ""
+  }
     
   save_html(
     tags$html(
+      dir = ifelse(lang_ori == "AR", "rtl", "ltr"),
       tags$head(includeHTML("styles.html")),
-      tags$h2(HTML(txt['main.title', lang] )), 
-      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr', lang] ))),
-      tags$h3(HTML(txt['h3', lang])),
-      div(class="container", gpi),
+      tags$h2(HTML(txt['main.title', lang_ori] )), 
+      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="13" align="top">&nbsp; ', txt['descr', lang_ori] ))),
+      tags$h3(HTML(txt['h3', lang_ori])),
+      div(class="container", dir="ltr", gpi),
+      div(class="footer", HTML(footer)),
       div(id = "cite", HTML(source)),
       HTML(iframeresizer)  
     ), 
-    file =  paste0("occupationsByISCOandSwiss_", lang, ".html"), libdir = "js")
+    file =  paste0("occupationsByISCOandSwiss_", lang_ori, ".html"), libdir = "js")
 }
 
 #plotProportionalStackedBar(dd, txt)
@@ -449,7 +462,7 @@ plotOriginColumn <- function(adat, origin, txt) {
                                  pointPadding = 0.01, groupPadding = 0.01,
                                  states = list(hover = list( brightness = 0.2, 
                                  color = "#333333", borderColor = "#333333")))
-    )
+    ) 
   
     cchart %>% hc_tooltip(
       hideDelay = 10, formatter = JS("function() { return this.point.tp; }"), 
@@ -485,6 +498,7 @@ for (lang in colnames(txt)) {
   
   save_html(
     tags$html(
+      dir = ifelse(lang == "AR", "rtl", "ltr"),
       tags$head(includeHTML(style_swi_highcharter())),
       tags$h2(HTML(txt['main.title2', lang])),
       div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr2', lang]))),
