@@ -47,7 +47,7 @@ Le N (dernière colonne) représente le nombre de personnes qui à l’enquête 
 * [Les plus favorables aux initiatives anti-étrangers sont toujours les mêmes](https://www.swissinfo.ch/fre/le-vote-des-cantons-sous-la-loupe_les-plus-favorables-aux-initiatives-anti-étrangers-sont-toujours-les-mêmes/41990242)
 
 ```{r setup, include=FALSE}
-exportRawData <- T
+exportRawData <- F
 displayExplore <- F
 cleanOutput <- T
 
@@ -70,7 +70,7 @@ library(swiRcharts)
 library(highcharter)
 ```
 
-```{r data load & wrangle, include = F, warning = F}
+```{r data load & wrangle, include = F, warning = F, message = F}
 txt <- loadTranslation(translation.file)
 
 xls.read <- read_excel(excel.file, skip = 1, col_types = c("numeric", "text", rep("numeric", 12))) %>%
@@ -222,7 +222,10 @@ datac <- data %>%
 
 
 if(exportRawData) {
-  datac %>% write_csv(path = "data/isco1_byNationality.csv")
+  datac %>% select(group, origin, totGroupOri) %>%
+    mutate(origin = ifelse(origin == "Suisse", "swiss", "foreigner")) %>% 
+    rename(value = totGroupOri) %>% 
+    write_csv(path = "data/isco1_byNationality.csv")
 }
  
 if(displayExplore) {

@@ -1705,7 +1705,10 @@ datac &lt;- data %&gt;%
 
 
 if(exportRawData) {
-  datac %&gt;% write_csv(path = &quot;data/isco1_byNationality.csv&quot;)
+  datac %&gt;% select(group, origin, totGroupOri) %&gt;%
+    mutate(origin = ifelse(origin == &quot;Suisse&quot;, &quot;swiss&quot;, &quot;foreigner&quot;)) %&gt;% 
+    rename(value = totGroupOri) %&gt;% 
+    write_csv(path = &quot;data/isco1_byNationality.csv&quot;)
 }
  
 if(displayExplore) {
@@ -1863,6 +1866,12 @@ for (lang in colnames(txt)) {
 <pre><code>## 
 ##  IT</code></pre>
 <pre><code>## 
+##  AR</code></pre>
+<pre><code>## 
+##  RU</code></pre>
+<pre><code>## 
+##  JA</code></pre>
+<pre><code>## 
 ##  ZH</code></pre>
 </div>
 <div id="profession-group-by-country-of-birth-and-number-of-jobs" class="section level3">
@@ -1983,6 +1992,9 @@ for (lang in colnames(txt)) {
 ##  FR
 ##  DE
 ##  IT
+##  AR
+##  RU
+##  JA
 ##  ZH</code></pre>
 <pre class="r"><code>if(cleanOutput) {
   files &lt;- c(&quot;jobByCountryBirth_.*&quot;, &quot;occupationsByISCOandSwiss_.*&quot;, &quot;js&quot;)
