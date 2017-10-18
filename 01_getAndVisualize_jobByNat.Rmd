@@ -271,7 +271,7 @@ lang <- 'FR'
 plotProportionalStackedBar <- function(ddd, txt, lang) {
   lang_ori <- lang
   if(lang == "AR") {
-    lang <- 'FR'
+    lang <- 'EN'
   }
   # add translation
   labels$label <- txt[as.character(labels$group), lang]
@@ -279,8 +279,8 @@ plotProportionalStackedBar <- function(ddd, txt, lang) {
   ddd$orilab <- txt[ifelse(ddd$origin == "Suisse", "ori.CH", "ori.nonCH"), lang]
   size_annotate_foreigner <- case_when(
     lang == "RU" ~ 10,
-    lang %in% c("ZH", "JA") ~ 12,
-    ~ 14
+    lang %in% c("ZH", "JA") ~ 11,
+    TRUE ~ 14
   )
   
   ddd %<>% 
@@ -366,7 +366,7 @@ plotProportionalStackedBar <- function(ddd, txt, lang) {
     txt['source', lang_ori], ": ", htmlLink('http://nccr-onthemove.ch', txt['source.name', lang_ori]), " | swissinfo.ch | @duc_qn"
   )
   if(lang_ori == 'AR') {
-    footer <- paste0(txt[as.character(rev(labels$group)), lang], " : ", txt[as.character(rev(labels$group)), lang_ori], collapse = ", ")
+    footer <- paste0(txt[as.character(rev(labels$group)), lang], "&nbsp;:&nbsp;", txt[as.character(rev(labels$group)), lang_ori], collapse = ", ")
   } else {
     footer <- ""
   }
@@ -375,13 +375,15 @@ plotProportionalStackedBar <- function(ddd, txt, lang) {
     tags$html(
       dir = ifelse(lang_ori == "AR", "rtl", "ltr"),
       tags$head(includeHTML("styles.html")),
-      tags$h2(HTML(txt['main.title', lang_ori] )), 
-      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="13" align="top">&nbsp; ', txt['descr', lang_ori] ))),
-      tags$h3(HTML(txt['h3', lang_ori])),
-      div(class="container", dir="ltr", gpi),
-      div(class="footer", HTML(footer)),
-      div(id = "cite", HTML(source)),
-      HTML(iframeresizer)  
+      tags$body(
+        h2(HTML(txt['main.title', lang_ori] )), 
+        div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="13" align="top">&nbsp; ', txt['descr', lang_ori] ))),
+        h3(HTML(txt['h3', lang_ori])),
+        div(dir="ltr", gpi),
+        div(class="footer", HTML(footer)),
+        div(id = "cite", HTML(source)),
+        HTML(iframeresizer)  
+     )
     ), 
     file =  paste0("occupationsByISCOandSwiss_", lang_ori, ".html"), libdir = "js")
 }
@@ -500,13 +502,14 @@ for (lang in colnames(txt)) {
     tags$html(
       dir = ifelse(lang == "AR", "rtl", "ltr"),
       tags$head(includeHTML(style_swi_highcharter())),
-      tags$h2(HTML(txt['main.title2', lang])),
-      div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr2', lang]))),
-      tags$h3(HTML(txt['h3b', lang])),
-      div(class = "graphic", hw_grid(plots, ncol = 2, rowheight = chart.height)),
-      div(id = "cite", HTML(source)),
-      # div(class = "footer", HTML(txt['footer', lang])),
-      HTML(iframeresizer)  
+      tags$body(
+        h2(HTML(txt['main.title2', lang])),
+        div(class = "descr", HTML(paste0('<img src="https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png" width="12" align="top">&nbsp; ', txt['descr2', lang]))),
+        h3(HTML(txt['h3b', lang])),
+        div(class = "graphic", hw_grid(plots, ncol = 2, rowheight = chart.height)),
+        div(id = "cite", HTML(source)),
+        HTML(iframeresizer)
+      )
     ), 
     file =  paste0("jobByCountryBirth_", lang, ".html"), libdir = "js")
 }

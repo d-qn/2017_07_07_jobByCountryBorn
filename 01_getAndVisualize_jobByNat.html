@@ -1754,12 +1754,17 @@ lang &lt;- 'FR'
 plotProportionalStackedBar &lt;- function(ddd, txt, lang) {
   lang_ori &lt;- lang
   if(lang == &quot;AR&quot;) {
-    lang &lt;- 'FR'
+    lang &lt;- 'EN'
   }
   # add translation
   labels$label &lt;- txt[as.character(labels$group), lang]
   ddd$label &lt;- txt[as.character(ddd$group), lang]
   ddd$orilab &lt;- txt[ifelse(ddd$origin == &quot;Suisse&quot;, &quot;ori.CH&quot;, &quot;ori.nonCH&quot;), lang]
+  size_annotate_foreigner &lt;- case_when(
+    lang == &quot;RU&quot; ~ 10,
+    lang %in% c(&quot;ZH&quot;, &quot;JA&quot;) ~ 11,
+    TRUE ~ 14
+  )
   
   ddd %&lt;&gt;% 
     mutate(
@@ -1775,9 +1780,7 @@ plotProportionalStackedBar &lt;- function(ddd, txt, lang) {
 
   gp &lt;- ggplot(ddd) + 
     annotate(geom = &quot;text&quot;, x = 0.99, y = 0.5, label = paste(strsplit(txt['ori.nonCH', lang], &quot;&quot;)[[1]], collapse = &quot; &quot;), 
-             colour = &quot;#193442&quot;, alpha = 0.9, angle = -90, vjust = 1, hjust = 0.5, size = 14, fontface = &quot;bold&quot;) + 
-    # annotate(geom = &quot;text&quot;, x = 0.01, y = 0.5, label = paste(strsplit(txt['ori.CH', lang], &quot;&quot;)[[1]], collapse = &quot; &quot;), 
-    #          colour = &quot;#72302f&quot;, alpha = 0.2, angle = -90, vjust = 0, hjust = 0.5, size = 17, fontface = &quot;bold&quot;) + 
+             colour = &quot;#193442&quot;, alpha = 0.9, angle = -90, vjust = 1, hjust = 0.5, size = size_annotate_foreigner, fontface = &quot;bold&quot;) + 
     geom_rect_interactive(
       aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = origin, data_id = id, tooltip = tp),
       colour = &quot;white&quot;, size = 0.25, alpha = 0.95
@@ -1846,7 +1849,7 @@ plotProportionalStackedBar &lt;- function(ddd, txt, lang) {
     txt['source', lang_ori], &quot;: &quot;, htmlLink('http://nccr-onthemove.ch', txt['source.name', lang_ori]), &quot; | swissinfo.ch | @duc_qn&quot;
   )
   if(lang_ori == 'AR') {
-    footer &lt;- paste0(txt[as.character(rev(labels$group)), lang], &quot; : &quot;, txt[as.character(rev(labels$group)), lang_ori], collapse = &quot;, &quot;)
+    footer &lt;- paste0(txt[as.character(rev(labels$group)), lang], &quot;&amp;nbsp;:&amp;nbsp;&quot;, txt[as.character(rev(labels$group)), lang_ori], collapse = &quot;, &quot;)
   } else {
     footer &lt;- &quot;&quot;
   }
@@ -1855,13 +1858,15 @@ plotProportionalStackedBar &lt;- function(ddd, txt, lang) {
     tags$html(
       dir = ifelse(lang_ori == &quot;AR&quot;, &quot;rtl&quot;, &quot;ltr&quot;),
       tags$head(includeHTML(&quot;styles.html&quot;)),
-      tags$h2(HTML(txt['main.title', lang_ori] )), 
-      div(class = &quot;descr&quot;, HTML(paste0('&lt;img src=&quot;https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png&quot; width=&quot;13&quot; align=&quot;top&quot;&gt;&amp;nbsp; ', txt['descr', lang_ori] ))),
-      tags$h3(HTML(txt['h3', lang_ori])),
-      div(class=&quot;container&quot;, dir=&quot;ltr&quot;, gpi),
-      div(class=&quot;footer&quot;, HTML(footer)),
-      div(id = &quot;cite&quot;, HTML(source)),
-      HTML(iframeresizer)  
+      tags$body(
+        h2(HTML(txt['main.title', lang_ori] )), 
+        div(class = &quot;descr&quot;, HTML(paste0('&lt;img src=&quot;https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png&quot; width=&quot;13&quot; align=&quot;top&quot;&gt;&amp;nbsp; ', txt['descr', lang_ori] ))),
+        h3(HTML(txt['h3', lang_ori])),
+        div(dir=&quot;ltr&quot;, gpi),
+        div(class=&quot;footer&quot;, HTML(footer)),
+        div(id = &quot;cite&quot;, HTML(source)),
+        HTML(iframeresizer)  
+     )
     ), 
     file =  paste0(&quot;occupationsByISCOandSwiss_&quot;, lang_ori, &quot;.html&quot;), libdir = &quot;js&quot;)
 }
@@ -1872,16 +1877,22 @@ for (lang in colnames(txt)) {
   plotProportionalStackedBar(dd, txt, lang)
 }</code></pre>
 <pre><code>## 
-##  FR</code></pre>
+##  EN</code></pre>
 <pre><code>## Warning: package 'gdtools' was built under R version 3.4.1</code></pre>
+<pre><code>## 
+##  FR</code></pre>
 <pre><code>## 
 ##  DE</code></pre>
 <pre><code>## 
 ##  IT</code></pre>
 <pre><code>## 
+##  PT</code></pre>
+<pre><code>## 
 ##  AR</code></pre>
 <pre><code>## 
 ##  RU</code></pre>
+<pre><code>## 
+##  ES</code></pre>
 <pre><code>## 
 ##  JA</code></pre>
 <pre><code>## 
@@ -1992,22 +2003,26 @@ for (lang in colnames(txt)) {
     tags$html(
       dir = ifelse(lang == &quot;AR&quot;, &quot;rtl&quot;, &quot;ltr&quot;),
       tags$head(includeHTML(style_swi_highcharter())),
-      tags$h2(HTML(txt['main.title2', lang])),
-      div(class = &quot;descr&quot;, HTML(paste0('&lt;img src=&quot;https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png&quot; width=&quot;12&quot; align=&quot;top&quot;&gt;&amp;nbsp; ', txt['descr2', lang]))),
-      tags$h3(HTML(txt['h3b', lang])),
-      div(class = &quot;graphic&quot;, hw_grid(plots, ncol = 2, rowheight = chart.height)),
-      div(id = &quot;cite&quot;, HTML(source)),
-      # div(class = &quot;footer&quot;, HTML(txt['footer', lang])),
-      HTML(iframeresizer)  
+      tags$body(
+        h2(HTML(txt['main.title2', lang])),
+        div(class = &quot;descr&quot;, HTML(paste0('&lt;img src=&quot;https://interactive.swissinfo.ch/assets/Interactive_icon.svg.png&quot; width=&quot;12&quot; align=&quot;top&quot;&gt;&amp;nbsp; ', txt['descr2', lang]))),
+        h3(HTML(txt['h3b', lang])),
+        div(class = &quot;graphic&quot;, hw_grid(plots, ncol = 2, rowheight = chart.height)),
+        div(id = &quot;cite&quot;, HTML(source)),
+        HTML(iframeresizer)
+      )
     ), 
     file =  paste0(&quot;jobByCountryBirth_&quot;, lang, &quot;.html&quot;), libdir = &quot;js&quot;)
 }</code></pre>
 <pre><code>## 
+##  EN
 ##  FR
 ##  DE
 ##  IT
+##  PT
 ##  AR
 ##  RU
+##  ES
 ##  JA
 ##  ZH</code></pre>
 <pre class="r"><code>if(cleanOutput) {
